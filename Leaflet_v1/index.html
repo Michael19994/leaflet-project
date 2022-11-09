@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet</title>
+
+  <!--Leaflet css-->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" /> -->
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
+  <style>
+      body {
+        background-color: ghostwhite;
+      }
+
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+
+      .headercontainer {
+        display: flex;
+        background-color: skyblue;
+        color: white;
+        padding: 1rem;
+      }
+
+      .header__title {
+        margin: auto;
+        font-weight: 700;
+        font-size: 5rem;
+        font-style: oblique;      }
+
+      .header__nav {
+      
+      }
+
+      .header__ul {
+        
+      }
+
+      li {
+        list-style: none;
+        display: inline;
+        margin: 1rem;
+        bottom: 0;
+        right: 0;
+      }
+
+      a {
+        font-size: 2rem;
+        padding: 9px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: gold;
+      }
+
+      .maincontainer {
+        color: skyblue; 
+      }
+
+      .article__main {
+        display: block;
+      }
+
+      .h2__main {
+        text-align: center;
+        font-size: 1.5rem;
+      }
+
+      .img1__main {
+        display: flex;
+        margin-right: auto;
+      }
+
+      .img2__main {
+        display: flex;
+        margin-left: auto;
+      }
+
+      .ol__main {
+        text-align: center;
+      }
+      
+      .li__main {
+        display: block;
+      }
+   
+      .footercontainer {
+        display: flex;
+        padding: 1rem;     
+      }
+
+      .img__footer {
+        margin: auto;
+        padding: 1rem;
+      }
+
+      .author {
+        margin: 2rem;
+      }
+
+      .copy {
+        margin: 0.5rem;
+      }
+
+      .trade {
+      }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <header class="headercontainer">
+    <img src="./img/Argentina_national_football_team_logo.svg.png" alt="Argentine Fa" height="100" width="125">
+    <h1 class="header__title"> <strong> Argentine Football Clubs </strong></h1>
+
+    <nav class="header__nav">
+      <ul class="header__ul">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="clubs">Clubs</a>
+        </li>
+        <li>
+          <a href="competitions">Competitions</a>
+        </li>
+        <li>
+          <a href="about">About</a>
+        </li>
+        <li>
+          <a href="contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <img src="./img/Argentina_national_football_team_logo.svg.png" alt="Argentine Fa" height="100" width="125">
+  </header>
+
+  <main class="maincontainer">
+    <article class="article__main">
+      <!-- <img class="img1__main" src="img/Maradona-Mundial_86_con_la_copa.jpg" alt="Maradona lifting the world cup" width="150" height="150"> -->
+      <h2 class="h2__main">Instructions</h2>
+      <ol class="ol__main">
+          <li class="li__main">Zoom in and out using your mouse or the zoom in and out buttons on the top left of the map</li>
+          <li class="li__main">To change map, click the white box in the top right corner of the map</li>
+          <li class="li__main">Drag your mouse across the map or use arrow keys in the direction you want</li>
+          <li class="li__main"> Click the badges on the map to see the name of the football club</li> 
+          <li class="li__main"> If you are unable to use the map then please click on 'clubs' link in the navigation bar at the top of the page</li>
+      </p>
+      <!-- <img class="img2__main" src="img/Argentina_team_in_St._Petersburg_(cropped)_Messi.jpg" alt="Messi" width="185" height="150"> -->
+    </article>
+    <div aria-label="map" id="map"></div> 
+  </main>
+
+  <footer class="footercontainer">
+    
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" height="100" width="150">
+    
+    <p class="author">Author - Michael Lyon</p>
+    <p class="copy">&copy;</p>
+    <p class="trade">&trade;</p>
+  </footer>
+
+
+
+
+
+<!--Leaflet js-->
+<!-- <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script> -->
+<script src="/leaflet/leaflet.js"></script>
+
+<script>
+  // Map install
+  const map = L.map('map').setView([-33.2653 ,-62.4935], 8);
+
+
+  // osm layer
+  const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  });
+  osm.addTo(map);
+
+
+  // world imagery
+  const worldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+  });
+  worldImagery.addTo(map);
+
+
+  //google street
+  googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0', 'mt1', 'mt2', 'mt3']
+  });
+  // googleStreets.addTo(map);
+
+  
+  //dark mode map
+  const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.opensreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto/.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+  });
+
+
+  // google satellite 
+  // googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&8={x}&y={y}&z={z}',{
+  // maxZoom: 20,
+  // subdomains:['mt0', 'mt1', 'mt2', 'mt3'] 
+  // });
+  // googleSat.addTo(map);
+
+
+  //Markers
+
+  //River
+
+  const myIcon1 = L.icon({
+    iconUrl: 'img/River_plate_logo_2022.svg.png',
+    iconSize: [50, 50],
+});
+  const marker1 = L.marker([-34.5453 ,-58.4485], {icon: myIcon1});
+  var popup = marker1.bindPopup('Club Atlético River Plate').openPopup();
+  popup.addTo(map);
+
+
+  //boca
+
+  const myIcon2 = L.icon({
+    iconUrl: 'img/Boca_Juniors_logo18.svg.png',
+    iconSize: [50, 50],
+});
+  const marker2 = L.marker([-34.6356, -58.3655], {icon: myIcon2});
+  var popup = marker2.bindPopup('Club Atlético Boca Juniors').openPopup();
+  popup.addTo(map);
+
+
+  //Racing
+
+  const myIcon3 = L.icon({
+    iconUrl: 'img/Escudo_de_Racing_Club_(2014).svg.png',
+    iconSize: [50, 50],
+});
+  const marker3 = L.marker([-34.667556, -58.368583], {icon: myIcon3});
+  var popup = marker3.bindPopup('Racing Club de Avellaneda').openPopup();
+  popup.addTo(map);
+
+
+  //Independiente
+
+  const myIcon4 = L.icon({
+    iconUrl: 'img/Escudo_del_Club_Atlético_Independiente.svg.png',
+    iconSize: [50, 50],
+});
+  const marker4 = L.marker([-34.67026, -58.3709], {icon: myIcon4});
+  var popup = marker4.bindPopup('Club Atlético Independiente').openPopup();
+  popup.addTo(map);
+
+
+  //San Lorenzo
+
+  const myIcon5 = L.icon({
+    iconUrl: 'img/San_lorenzo_almagro_logo.svg.png',
+    iconSize: [50, 50],
+});
+  const marker5 = L.marker([-34.6521, -58.4401], {icon: myIcon5});
+  var popup = marker5.bindPopup('San Lorenzo de Almagro').openPopup();
+  popup.addTo(map);
+
+  
+   //Club Atlético Vélez Sarsfield
+
+   const myIcon6 = L.icon({
+    iconUrl: 'img/1200px-Escudo_del_Club_Atlético_Vélez_Sarsfield.svg.png',
+    iconSize: [50, 50],
+});
+  const marker6 = L.marker([-34.635375, -58.520711], {icon: myIcon6});
+  var popup = marker6.bindPopup('Club Atlético Vélez Sarsfield').openPopup();
+  popup.addTo(map);
+
+   //Tigre
+
+   const myIcon7 = L.icon({
+    iconUrl: 'img/Escudo_del_Club_Atlético_Tigre_-_2019.svg.png',
+    iconSize: [50, 50],
+});
+  const marker7 = L.marker([-34.4498, -58.5424], {icon: myIcon7});
+  var popup = marker7.bindPopup('Club Atlético Tigre').openPopup();
+  popup.addTo(map);
+
+   //Banfield
+
+   const myIcon8 = L.icon({
+    iconUrl: 'img/Escudo_de_Banfield.png',
+    iconSize: [50, 50],
+});
+  const marker8 = L.marker([-34.7508, -58.3880], {icon: myIcon8});
+  var popup = marker8.bindPopup('Club Atlético Banfield').openPopup();
+  popup.addTo(map);
+
+   //Argentinos Juniors
+
+   const myIcon9 = L.icon({
+    iconUrl: 'img/Escudo_de_la_Asociación_Atlética_Argentinos_Juniors.svg.png',
+    iconSize: [50, 50],
+});
+  const marker9= L.marker([-34.6061, -58.4728], {icon: myIcon9});
+  var popup = marker9.bindPopup('Argentinos Juniors').openPopup();
+  popup.addTo(map);
+
+   //Arsenal de Sarandí
+
+   const myIcon10 = L.icon({
+    iconUrl: 'img/Arsenal_Sarandí_logo.svg.png',
+    iconSize: [50, 50],
+});
+  const marker10= L.marker([-34.6783811, -58.3406089], {icon: myIcon10});
+  var popup = marker10.bindPopup('Arsenal de Sarandí').openPopup();
+  popup.addTo(map);
+
+
+  //Barracas Central
+
+   const myIcon11 = L.icon({
+    iconUrl: 'img/Barracas_Central_logo.svg.png',
+    iconSize: [50, 50],
+});
+  const marker11= L.marker([-34.6475, -58.3969], {icon: myIcon11});
+  var popup = marker11.bindPopup('Barracas Central').openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Huracán
+
+   const myIcon12 = L.icon({
+    iconUrl: 'img/Club_huracan_logo.png',
+    iconSize: [50, 50],
+});
+  const marker12= L.marker([-34.6429, -58.3969], {icon: myIcon12});
+  var popup = marker12.bindPopup('Club Atlético Huracán').openPopup();
+  popup.addTo(map);
+
+
+  //Defensa y Justicia
+
+   const myIcon13 = L.icon({
+    iconUrl: 'img/1920px-Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg.png',
+    iconSize: [50, 50],
+});
+  const marker13= L.marker([-34.8215, -58.2858], {icon: myIcon13});
+  var popup = marker13.bindPopup('Defensa y Justicia').openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Platense
+
+   const myIcon14 = L.icon({
+    iconUrl: 'img/Escudo_del_Club_Altético_Platense.svg.png',
+    iconSize: [50, 50],
+});
+  const marker14= L.marker([-34.5402, -58.4816], {icon: myIcon14});
+  var popup = marker14.bindPopup('Club Atlético Platense').openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Lanús
+
+   const myIcon15 = L.icon({
+    iconUrl: 'img/Club_lanus_logo.svg.png',
+    iconSize: [50, 50],
+});
+  const marker15= L.marker([-34.717667, -58.383806 ], {icon: myIcon15});
+  var popup = marker15.bindPopup('Club Atlético Lanús').openPopup();
+  popup.addTo(map);
+
+
+  //Estudiantes de La Plata
+
+   const myIcon16 = L.icon({
+    iconUrl: 'img/1024px-Escudo_de_Estudiantes_de_La_Plata.svg.png',
+    iconSize: [50, 50],
+});
+  const marker16= L.marker([-34.9118, -57.9390 ], {icon: myIcon16});
+  var popup = marker16.bindPopup('Estudiantes de La Plata').openPopup();
+  popup.addTo(map);
+
+
+  //Club de Gimnasia y Esgrima La Plata
+
+   const myIcon17 = L.icon({
+    iconUrl: 'img/Gimnasia_Esgrima_LP_logo.svg.png',
+    iconSize: [50, 50],
+});
+  const marker17= L.marker([-34.9110, -57.9324], {icon: myIcon17});
+  var popup = marker17.bindPopup('de La Plata').openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Aldosivi
+
+   const myIcon18 = L.icon({
+    iconUrl: 'img/Aldosivi_logo.svg.png',
+    iconSize: [50, 50],
+});
+  const marker18= L.marker([-38.0180, -57.5823], {icon: myIcon18});
+  var popup = marker18.bindPopup('Club Atlético Aldosivi').openPopup();
+  popup.addTo(map);
+
+
+   //Atlético Tucumán
+
+   const myIcon19 = L.icon({
+    iconUrl: 'img/Logo_del_Club_Atlético_Tucumán_-_2017.svg.png',
+    iconSize: [50, 50],
+});
+  const marker19= L.marker([-26.8126, -65.1998], {icon: myIcon19});
+  var popup = marker19.bindPopup('Atlético Tucumán').openPopup();
+  popup.addTo(map);
+
+
+   //Central Córdoba de Santiago del Estero
+
+   const myIcon20 = L.icon({
+    iconUrl: 'img/Escudo_del_Club_Central_Córdoba_de_Santiago_del_Estero.svg.png',
+    iconSize: [50, 50],
+});
+  const marker20= L.marker([-27.793833, -64.264222], {icon: myIcon20});
+  var popup = marker20.bindPopup('Central Córdoba de Santiago del Estero').openPopup();
+  popup.addTo(map);
+
+
+   //Club Atlético Colón
+
+   const myIcon21 = L.icon({
+    iconUrl: 'img/Escudo_Colon_Con_Estrella.png',
+    iconSize: [50, 50],
+});
+  const marker21= L.marker([-31.6626, -60.7254], {icon: myIcon21});
+  var popup = marker21.bindPopup('Club Atlético Colón').openPopup();
+  popup.addTo(map);
+
+
+   //Godoy Cruz Antonio Tomba
+
+   const myIcon22 = L.icon({
+    iconUrl: 'img/GCAT.png',
+    iconSize: [50, 50],
+});
+  const marker22= L.marker([-32.8897, -68.8801], {icon: myIcon22});
+  var popup = marker22.bindPopup('Godoy Cruz Antonio Tomba').openPopup();
+  popup.addTo(map);
+
+
+   //Newell's Old Boys
+
+   const myIcon23 = L.icon({
+    iconUrl: `img/1920px-Escudo_del_Club_Atlético_Newell's_Old_Boys_de_Rosario.svg.png`,
+    iconSize: [50, 50],
+});
+  const marker23= L.marker([-32.9560, -60.6616], {icon: myIcon23});
+  var popup = marker23.bindPopup(`Newell's Old Boys`).openPopup();
+  popup.addTo(map);
+
+  //Club Atlético Patronato
+
+  const myIcon24 = L.icon({
+    iconUrl: "img/C.A._Patronato_ESCUDO_OFICIAL.svg.png",
+    iconSize: [50, 50],
+});
+  const marker24= L.marker([-31.7430, -60.5080], {icon: myIcon24});
+  var popup = marker24.bindPopup("Club Atlético Patronato").openPopup();
+  popup.addTo(map);
+
+
+  //Rosario Central
+
+  const myIcon25 = L.icon({
+    iconUrl: "img/Rosario_Central_logo.svg.png",
+    iconSize: [50, 50],
+});
+  const marker25= L.marker([-32.9140, -60.6742], {icon: myIcon25});
+  var popup = marker25.bindPopup("Rosario Central").openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Sarmiento
+
+  const myIcon26 = L.icon({
+    iconUrl: "img/Escudo_del_Club_Atlético_Sarmiento_de_Junín.svg.png",
+    iconSize: [50, 50],
+});
+  const marker26= L.marker([-34.584757, -60.929409], {icon: myIcon26});
+  var popup = marker26.bindPopup("Club Atlético Sarmiento").openPopup();
+  popup.addTo(map);
+
+
+  //Talleres de Córdoba
+
+  const myIcon27 = L.icon({
+    iconUrl: "img/Escudo_Talleres_2015.svg.png",
+    iconSize: [50, 50],
+});
+  const marker27= L.marker([-31.3689, -64.2461], {icon: myIcon27});
+  var popup = marker27.bindPopup("Talleres de Córdoba").openPopup();
+  popup.addTo(map);
+
+
+  //Unión de Santa Fe
+
+  const myIcon28 = L.icon({
+    iconUrl: "img/Escudo_del_Club_Atlético_Unión.svg.png",
+    iconSize: [50, 50],
+});
+  const marker28= L.marker([-31.6319, -60.7157], {icon: myIcon28});
+  var popup = marker28.bindPopup("Unión de Santa Fe").openPopup();
+  popup.addTo(map);
+
+
+  //Club Agropecuario Argentino
+
+  const myIcon29 = L.icon({
+    iconUrl: "img/Agropec_escudo.png",
+    iconSize: [50, 50],
+});
+  const marker29= L.marker([-35.629767, -61.376947], {icon: myIcon29});
+  var popup = marker29.bindPopup("Club Agropecuario Argentino").openPopup();
+  popup.addTo(map);
+
+
+  //All Boys
+
+  const myIcon30 = L.icon({
+    iconUrl: "img/Escudo_del_Club_Atlético_All_Boys.svg.png",
+    iconSize: [50, 50],
+});
+  const marker30= L.marker([-34.6169, -58.49770], {icon: myIcon30});
+  var popup = marker30.bindPopup("All Boys").openPopup();
+  popup.addTo(map);
+
+
+  //Club Almagro
+
+  const myIcon31 = L.icon({
+    iconUrl: "img/1920px-Escudo_del_Club_Almagro.svg.png",
+    iconSize: [50, 50],
+});
+  const marker31= L.marker([-34.614167, -58.535], {icon: myIcon31});
+  var popup = marker31.bindPopup("Club Almagro").openPopup();
+  popup.addTo(map);
+
+
+  //Club Almirante Brown
+
+  const myIcon32 = L.icon({
+    iconUrl: "img/1280px-Escudo_del_Club_Almirante_Brown.svg.png",
+    iconSize: [50, 50],
+});
+  const marker32= L.marker([-34.694981, -58.586814], {icon: myIcon32});
+  var popup = marker32.bindPopup("Club Almagro").openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Alvarado
+
+  const myIcon33 = L.icon({
+    iconUrl: "img/1920px-Escudo_del_Club_Alvarado_(Mar_del_Plata)_-_BSAS.svg.png",
+    iconSize: [50, 50],
+});
+  const marker33= L.marker([-38.017944, -57.583333], {icon: myIcon33});
+  var popup = marker33.bindPopup("Club Atlético Alvarado").openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Atlanta
+
+  const myIcon34 = L.icon({
+    iconUrl: "img/C.a._atlanta.png",
+    iconSize: [50, 50],
+});
+  const marker34= L.marker([-34.594972, -58.449261], {icon: myIcon34});
+  var popup = marker34.bindPopup("Club Atlético Atlanta").openPopup();
+  popup.addTo(map);
+
+
+  //Atlético de Rafaela
+
+  const myIcon35 = L.icon({
+    iconUrl: "img/Logotipo_Oficial_y_Escudo_del_Club_Atlético_de_Rafaela.svg.png",
+    iconSize: [50, 50],
+});
+  const marker35= L.marker([-31.250833, -61.481389], {icon: myIcon35});
+  var popup = marker35.bindPopup("Atlético de Rafaela").openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Belgrano
+
+  const myIcon36 = L.icon({
+    iconUrl: "img/Escudo_del_Club_Atlético_Belgrano.svg.png",
+    iconSize: [50, 50],
+});
+  const marker36= L.marker([-31.4035, -64.206272], {icon: myIcon36});
+  var popup = marker36.bindPopup("Club Atlético Belgrano").openPopup();
+  popup.addTo(map);
+
+
+  //Club Atlético Brown
+
+  const myIcon37 = L.icon({
+    iconUrl: "img/Escudo_Club_Atlético_Brown_(Adrogué).png",
+    iconSize: [50, 50],
+});
+  const marker37= L.marker([-34.8075, -58.380000], {icon: myIcon37});
+  var popup = marker37.bindPopup("Club Atlético Brown").openPopup();
+  popup.addTo(map);
+
+  //Chacarita Juniors
+
+  const myIcon38 = L.icon({
+      iconUrl: "img/1920px-Escudo_del_Club_Atlético_Chacarita_Juniors.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker38= L.marker([-34.567389, -58.528167], {icon: myIcon38});
+    var popup = marker38.bindPopup("Chacarita Juniors").openPopup();
+    popup.addTo(map);
+
+
+  //Chaco For Ever
+
+  const myIcon39 = L.icon({
+      iconUrl: "img/Chaco_For_Ever-ARG.png",
+      iconSize: [50, 50],
+  });
+    const marker39= L.marker([-27.4698, -58.967], {icon: myIcon39});
+    var popup = marker39.bindPopup("Chaco For Ever").openPopup();
+    popup.addTo(map);
+
+
+  //Defensores de Belgrano
+
+  const myIcon40 = L.icon({
+      iconUrl: "img/Defensores_belgrano_logo.png",
+      iconSize: [50, 50],
+  });
+    const marker40= L.marker([-34.5412, -58.4618], {icon: myIcon40});
+    var popup = marker40.bindPopup("Defensores de Belgrano").openPopup();
+    popup.addTo(map);
+
+
+  //Deportivo Madryn
+
+  const myIcon41 = L.icon({
+      iconUrl: "img/1920px-Escudo_del_Club_Social_y_Deportivo_Madryn.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker41= L.marker([-42.747003, -65.042859], {icon: myIcon41});
+    var popup = marker41.bindPopup("Deportivo Madryn").openPopup();
+    popup.addTo(map);
+
+
+  //Deportivo Maipú
+
+  const myIcon42 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Deportivo_Maipu.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker42= L.marker([-32.9837, -68.792778], {icon: myIcon42});
+    var popup = marker42.bindPopup("Deportivo Maipú").openPopup();
+    popup.addTo(map);
+
+
+  //Deportivo Morón
+
+  const myIcon43 = L.icon({
+      iconUrl: "img/Dep_moron_logo16.png",
+      iconSize: [50, 50],
+  });
+    const marker43= L.marker([-34.662222, -58.631667], {icon: myIcon43});
+    var popup = marker43.bindPopup("Deportivo Morón").openPopup();
+    popup.addTo(map);
+
+
+  //Deportivo Riestra
+
+  const myIcon44 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Deportivo_Riestra.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker44= L.marker([-34.653333, -58.443611], {icon: myIcon44});
+    var popup = marker44.bindPopup("Deportivo Riestra").openPopup();
+    popup.addTo(map);
+
+
+  //Estudiantes de Buenos Aires
+
+  const myIcon45 = L.icon({
+      iconUrl: "img/Estudiantes_BA_escudo.png",
+      iconSize: [50, 50],
+  });
+    const marker45= L.marker([-34.606056, -58.55675], {icon: myIcon45});
+    var popup = marker45.bindPopup("Estudiantes de Buenos Aires").openPopup();
+    popup.addTo(map);
+
+
+  //Estudiantes de Río Cuarto
+
+  const myIcon46 = L.icon({
+      iconUrl: "img/1920px-Escudo_Asociacion_Atlética_Estudiantes_de_Río_Cuarto.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker46= L.marker([-33.1153, -64.3478], {icon: myIcon46});
+    var popup = marker46.bindPopup("Estudiantes de Río Cuarto").openPopup();
+    popup.addTo(map);
+
+
+  //Ferro Carril Oeste
+
+  const myIcon47 = L.icon({
+      iconUrl: "img/Escudo-oficial-fco.png",
+      iconSize: [50, 50],
+  });
+    const marker47= L.marker([-34.6185, -58.4476], {icon: myIcon47});
+    var popup = marker47.bindPopup("Ferro Carril Oeste").openPopup();
+    popup.addTo(map);
+
+
+  //CSD Flandria
+
+  const myIcon48 = L.icon({
+      iconUrl: "img/Flandria_logo.png",
+      iconSize: [50, 50],
+  });
+    const marker48= L.marker([-34.587275, -59.182136], {icon: myIcon48});
+    var popup = marker48.bindPopup("CSD Flandria").openPopup();
+    popup.addTo(map);
+
+  //Gimnasia y Esgrima de Jujuy
+
+  const myIcon49 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Gimnasia_y_Esgrima_Jujuy.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker49= L.marker([-24.198611, -65.290833], {icon: myIcon49});
+    var popup = marker49.bindPopup("Gimnasia y Esgrima de Jujuy").openPopup();
+    popup.addTo(map);
+
+
+  //Gimnasia y Esgrima de Mendoza
+
+  const myIcon50 = L.icon({
+      iconUrl: "img/Escudo_Club_Gimnasia_y_Esgrima_Mendoza.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker50= L.marker([-32.88425, -68.863556], {icon: myIcon50});
+    var popup = marker50.bindPopup("Gimnasia y Esgrima de Mendoza").openPopup();
+    popup.addTo(map);
+
+  //Club Atlético Güemes
+
+  const myIcon51 = L.icon({
+      iconUrl: "img/CA_Guemes_logo.png",
+      iconSize: [50, 50],
+  });
+    const marker51= L.marker([-27.793333, -64.276667], {icon: myIcon51});
+    var popup = marker51.bindPopup("Club Atlético Güemes").openPopup();
+    popup.addTo(map);
+
+  //Guillermo Brown de Puerto Madryn
+
+  const myIcon52 = L.icon({
+      iconUrl: "img/1280px-Escudo_de_Guillermo_Brown.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker52= L.marker([-42.778022, -65.038394], {icon: myIcon52});
+    var popup = marker52.bindPopup("Guillermo Brown de Puerto Madryn").openPopup();
+    popup.addTo(map);
+
+
+  //Independiente Rivadavia
+
+  const myIcon53 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Independiente_Rivadavia.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker53= L.marker([-32.890786, -68.862777], {icon: myIcon53});
+    var popup = marker53.bindPopup("Independiente Rivadavia").openPopup();
+    popup.addTo(map);
+
+
+  //Instituto Atlético Central Córdoba
+
+  const myIcon54 = L.icon({
+      iconUrl: "img/Instituto_Atlético_Central_Córdoba_logo.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker54= L.marker([-31.3837, -64.1803], {icon: myIcon54});
+    var popup = marker54.bindPopup("Instituto Atlético Central Córdoba").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Mitre (Santiago del Estero)
+
+  const myIcon55 = L.icon({
+      iconUrl: "img/Mitre_escudo.png",
+      iconSize: [50, 50],
+  });
+    const marker55= L.marker([-27.79287, -64.250044], {icon: myIcon55});
+    var popup = marker55.bindPopup("Club Atlético Mitre (Santiago del Estero)").openPopup();
+    popup.addTo(map);
+
+  //Club Atlético Nueva Chicago
+
+  const myIcon56 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Atlético_Nueva_Chicago.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker56= L.marker([-34.667919, -58.4996], {icon: myIcon56});
+    var popup = marker56.bindPopup("Club Atlético Nueva Chicago").openPopup();
+    popup.addTo(map);
+
+
+  //Quilmes Atlético Club
+
+  const myIcon57 = L.icon({
+      iconUrl: "img/1920px-Escudo_de_Quilmes_Atlético_Club.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker57= L.marker([-34.741778, -58.251889], {icon: myIcon57});
+    var popup = marker57.bindPopup("Quilmes Atlético Club").openPopup();
+    popup.addTo(map);
+
+
+  //Sacachispas Fútbol Club
+
+  const myIcon58 = L.icon({
+      iconUrl: "img/Logo_del_Sacachispas_Fútbol_Club.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker58= L.marker([-34.66460535, -58.451832636632], {icon: myIcon58});
+    var popup = marker58.bindPopup("Sacachispas Fútbol Club").openPopup();
+    popup.addTo(map);
+
+
+  //San Martín de San Juan
+
+  const myIcon59 = L.icon({
+      iconUrl: "img/Atlético_San_Martín.png",
+      iconSize: [50, 50],
+  });
+    const marker59= L.marker([-31.519847, -68.530289], {icon: myIcon59});
+    var popup = marker59.bindPopup("San Martín de San Juan").openPopup();
+    popup.addTo(map);
+
+
+  //San Martín de Tucumán
+
+  const myIcon60 = L.icon({
+      iconUrl: "img/San_martin_tucuman.png",
+      iconSize: [50, 50],
+  });
+    const marker60= L.marker([-26.836281, -65.229606], {icon: myIcon60});
+    var popup = marker60.bindPopup("San Martín de Tucumán").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético San Telmo
+
+  const myIcon61 = L.icon({
+      iconUrl: "img/Club_santelmo_logo.png",
+      iconSize: [50, 50],
+  });
+    const marker61= L.marker([-34.6439, -58.3528], {icon: myIcon61});
+    var popup = marker61.bindPopup("Club Atlético San Telmo").openPopup();
+    popup.addTo(map);
+
+
+  //Club y Biblioteca Ramón Santamarina
+
+  const myIcon62 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Santa_Marina_de_Tandil.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker62= L.marker([-37.3335, -59.143333], {icon: myIcon62});
+    var popup = marker62.bindPopup("Club y Biblioteca Ramón Santamarina").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Temperley
+
+  const myIcon63 = L.icon({
+      iconUrl: "img/Club-Atlético-Temperley.png",
+      iconSize: [50, 50],
+  });
+    const marker63= L.marker([-34.782286, -58.399508], {icon: myIcon63});
+    var popup = marker63.bindPopup("Club Atlético Temperley").openPopup();
+    popup.addTo(map);
+
+
+  //CSyD Tristán Suárez
+
+  const myIcon64 = L.icon({
+      iconUrl: "img/CSyD_Tristán_Suárez.png",
+      iconSize: [50, 50],
+  });
+    const marker64= L.marker([-34.890647, -58.563264], {icon: myIcon64});
+    var popup = marker64.bindPopup("CSyD Tristán Suárez").openPopup();
+    popup.addTo(map);
+
+
+  //Villa Dálmine
+
+  const myIcon65 = L.icon({
+      iconUrl: "img/Escudo_Villa_Dálmine.png",
+      iconSize: [50, 50],
+  });
+    const marker65= L.marker([-34.161389, -58.9775], {icon: myIcon65});
+    var popup = marker65.bindPopup("Villa Dálmine").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético y Social Defensores de Belgrano
+
+  const myIcon66 = L.icon({
+      iconUrl: "img/Defensores_de_Belgrano-ARG.png",
+      iconSize: [50, 50],
+  });
+    const marker66= L.marker([-33.496103, -60.070010], {icon: myIcon66});
+    var popup = marker66.bindPopup("Club Atlético y Social Defensores de Belgrano").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Douglas Haig
+
+  const myIcon67 = L.icon({
+      iconUrl: "img/Douglas_Haig_de_Pergamino.png",
+      iconSize: [50, 50],
+  });
+    const marker67= L.marker([-33.871928, -60.561475], {icon: myIcon67});
+    var popup = marker67.bindPopup("Club Atlético Douglas Haig").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Sarmiento (Resistencia)
+
+  const myIcon68 = L.icon({
+      iconUrl: "img/Sarmiento_(Resistencia).png",
+      iconSize: [50, 50],
+  });
+    const marker68= L.marker([-27.443611, -59.010833], {icon: myIcon68});
+    var popup = marker68.bindPopup("Club Atlético Sarmiento (Resistencia)").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Racing de Córdoba
+
+  const myIcon69 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Racing_de_Córdoba.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker69= L.marker([-31.3895, -64.14326], {icon: myIcon69});
+    var popup = marker69.bindPopup("Club Atlético Racing de Córdoba").openPopup();
+    popup.addTo(map);
+
+  //Club Sportivo Belgrano (San Francisco)
+
+  const myIcon70 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Sportivo_Belgrano_de_San_Francisco.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker70= L.marker([-31.418705, -62.079312], {icon: myIcon70});
+    var popup = marker70.bindPopup("Club Sportivo Belgrano (San Francisco)").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Boca Unidos
+
+  const myIcon71 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Atlético_Boca_Unidos.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker71= L.marker([-27.493388, -58.781601], {icon: myIcon71});
+    var popup = marker71.bindPopup("Club Atlético Boca Unidos").openPopup();
+    popup.addTo(map);
+
+  //Club Gimnasia y Esgrima (Concepción del Uruguay)
+
+  const myIcon72 = L.icon({
+      iconUrl: "img/ESCUDOORIGINALGIMNASIA.png",
+      iconSize: [50, 50],
+  });
+    const marker72= L.marker([-32.473011, -58.227498], {icon: myIcon72});
+    var popup = marker72.bindPopup("Club Gimnasia y Esgrima (Concepción del Uruguay)").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Paraná
+
+  const myIcon73 = L.icon({
+      iconUrl: "img/Atletico_parana_logo.png",
+      iconSize: [50, 50],
+  });
+    const marker73= L.marker([-31.747595, -60.515297], {icon: myIcon73});
+    var popup = marker73.bindPopup("Club Atlético Paraná").openPopup();
+    popup.addTo(map);
+
+
+  //Club Defensores de Pronunciamiento
+
+  const myIcon74 = L.icon({
+      iconUrl: "img/Escudo_Defensores_de_Pronunciamiento.png",
+      iconSize: [50, 50],
+  });
+    const marker74= L.marker([-32.343772, -58.450542], {icon: myIcon74});
+    var popup = marker74.bindPopup("Club Defensores de Pronunciamiento").openPopup();
+    popup.addTo(map);
+
+
+  //Club Deportivo Juventud Unida
+
+  const myIcon75 = L.icon({
+      iconUrl: "img/Juventud_unida_(G).png",
+      iconSize: [50, 50],
+  });
+    const marker75= L.marker([-33.007635, -58.528101], {icon: myIcon75});
+    var popup = marker75.bindPopup("Club Deportivo Juventud Unida").openPopup();
+    popup.addTo(map);
+
+
+  //Club Sportivo General San Martín
+
+  const myIcon76 = L.icon({
+      iconUrl: "img/58993.png",
+      iconSize: [50, 50],
+  });
+    const marker76= L.marker([-26.174839, -58.182938], {icon: myIcon76});
+    var popup = marker76.bindPopup("Club Sportivo General San Martín").openPopup();
+    popup.addTo(map);
+
+
+  //Club Mutual Crucero del Norte
+
+  const myIcon77 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Mutual_Crucero_del_Norte.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker77= L.marker([-27.498611, -55.852222], {icon: myIcon77});
+    var popup = marker77.bindPopup("Club Mutual Crucero del Norte").openPopup();
+    popup.addTo(map);
+
+
+  //Centro Juventud Antoniana
+
+  const myIcon78 = L.icon({
+      iconUrl: "img/Escudo_Oficial_Centro_Juventud_Antoniana.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker78= L.marker([-24.797736, -65.407453], {icon: myIcon78});
+    var popup = marker78.bindPopup("Centro Juventud Antoniana").openPopup();
+    popup.addTo(map);
+
+  //Club Atlético Central Norte (Salta)
+
+  const myIcon79 = L.icon({
+      iconUrl: "img/Central_Norte_de_Salta.png",
+      iconSize: [50, 50],
+  });
+    const marker79= L.marker([-24.7793, -65.42135], {icon: myIcon79});
+    var popup = marker79.bindPopup("Club Atlético Central Norte (Salta)").openPopup();
+    popup.addTo(map);
+
+  //Club de Gimnasia y Tiro
+
+  const myIcon80 = L.icon({
+      iconUrl: "img/Gimnasio_y_tiro_de_salta.png",
+      iconSize: [50, 50],
+  });
+    const marker80= L.marker([-24.783333, -65.403889], {icon: myIcon80});
+    var popup = marker80.bindPopup("Club de Gimnasia y Tiro").openPopup();
+    popup.addTo(map);
+
+
+  //Sportivo Atlético Club
+
+  const myIcon81 = L.icon({
+      iconUrl: "img/Sportivo_lasparejas_2021.png",
+      iconSize: [50, 50],
+  });
+    const marker81= L.marker([-32.676195, -61.518962], {icon: myIcon81});
+    var popup = marker81.bindPopup("Sportivo Atlético Club").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Unión (Sunchales)
+
+  const myIcon82 = L.icon({
+      iconUrl: "img/Escudo_del_Club_Atlético_Unión_de_Sunchales.svg.png",
+      iconSize: [50, 50],
+  });
+    const marker82= L.marker([-30.936982, -61.561944], {icon: myIcon82});
+    var popup = marker82.bindPopup("Club Atlético Unión (Sunchales)").openPopup();
+    popup.addTo(map);
+    
+  //Círculo Deportivo de Comandante Nicanor Otamendi
+
+  const myIcon83 = L.icon({
+      iconUrl: "img/Circulo_deportivo.png",
+      iconSize: [50, 50],
+    });
+    const marker83= L.marker([-38.112888, -57.842329], {icon: myIcon83});
+    var popup = marker83.bindPopup("Círculo Deportivo de Comandante Nicanor Otamendi").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Sansinena Social y Deportivo
+
+  const myIcon84 = L.icon({
+      iconUrl: "img/CSSD.png",
+      iconSize: [50, 50],
+    });
+    const marker84= L.marker([-38.718092, -62.402372], {icon: myIcon84});
+    var popup = marker84.bindPopup("Club Atlético Sansinena y Deportivo").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Liniers
+
+  const myIcon85 = L.icon({
+      iconUrl: "img/CAL_Escudo.png",
+      iconSize: [50, 50],
+    });
+    const marker85= L.marker([-38.702986, -62.267499], {icon: myIcon85});
+    var popup = marker85.bindPopup("Club Atlético Liniers").openPopup();
+    popup.addTo(map);
+
+
+  //Club Villa Mitre
+
+  const myIcon86 = L.icon({
+      iconUrl: "img/1920px-Escudo_Villa_Mitre.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker86= L.marker([-38.737874, -62.238693], {icon: myIcon86});
+    var popup = marker86.bindPopup("Club Villa Mitre").openPopup();
+    popup.addTo(map);
+
+
+  //Club Olimpo
+
+  const myIcon87 = L.icon({
+      iconUrl: "img/Escudo_Oficial_Olimpo.png",
+      iconSize: [50, 50],
+    });
+    const marker87= L.marker([-38.726944, -62.275833], {icon: myIcon87});
+    var popup = marker87.bindPopup("Club Olimpo").openPopup();
+    popup.addTo(map);
+
+    
+  //Club Atlético Social y Deportivo Camioneros
+
+  const myIcon88 = L.icon({
+      iconUrl: "img/14024658.png",
+      iconSize: [50, 50],
+    });
+    const marker88= L.marker([-34.753776, -58.490443], {icon: myIcon88});
+    var popup = marker88.bindPopup("Club Atlético Social y Deportivo Camioneros").openPopup();
+    popup.addTo(map);
+
+  //Club Ciudad de Bolívar
+
+  const myIcon89 = L.icon({
+      iconUrl: "img/Club_Ciudad_Bolivar_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker89= L.marker([-36.223072, -61.122088], {icon: myIcon89});
+    var popup = marker89.bindPopup("Club Ciudad de Bolívar").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Independiente (Chivilcoy)
+
+  const myIcon90 = L.icon({
+      iconUrl: "img/EscudoOficialIndependienteChivilcoy.png",
+      iconSize: [50, 50],
+    });
+    const marker90= L.marker([-34.912882, -60.016605], {icon: myIcon90});
+    var popup = marker90.bindPopup("Club Atlético Independiente (Chivilcoy)").openPopup();
+    popup.addTo(map);
+
+
+  //Club Deportivo Argentino (Monte Maíz)
+
+  const myIcon91 = L.icon({
+      iconUrl: "img/CDA.png",
+      iconSize: [50, 50],
+    });
+    const marker91= L.marker([-33.207883, -62.587863], {icon: myIcon91});
+    var popup = marker91.bindPopup("Club Deportivo Argentino (Monte Maíz)").openPopup();
+    popup.addTo(map);
+
+  //Club Ferro Carril Oeste (General Pico)
+
+  const myIcon92 = L.icon({
+      iconUrl: "img/Club_Ferro_Carril_Oeste_General_Pico.png",
+      iconSize: [50, 50],
+    });
+    const marker92= L.marker([-35.668136, -63.763992], {icon: myIcon92});
+    var popup = marker92.bindPopup("Club Ferro Carril Oeste (General Pico)").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Huracán Las Heras
+
+  const myIcon93 = L.icon({
+      iconUrl: "img/Logo_Huracán_Las_Heras.webp",
+      iconSize: [50, 50],
+    });
+    const marker93= L.marker([-32.845470, -68.826358], {icon: myIcon93});
+    var popup = marker93.bindPopup("Club Atlético Huracán Las Heras").openPopup();
+    popup.addTo(map);
+
+
+  //Club Cipolletti
+
+  const myIcon94 = L.icon({
+      iconUrl: "img/Club_Cipolletti_logo.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker94= L.marker([-38.936561, -68.003970], {icon: myIcon94});
+    var popup = marker94.bindPopup("Club Cipolletti").openPopup();
+    popup.addTo(map);
+
+  //Club Social y Deportivo Sol de Mayo
+
+  const myIcon95 = L.icon({
+      iconUrl: "img/Club_Sol_de_Mayo.png",
+      iconSize: [50, 50],
+    });
+    const marker95= L.marker([-40.818083, -62.976786], {icon: myIcon95});
+    var popup = marker95.bindPopup("Club Social y Deportivo Sol de Mayo").openPopup();
+    popup.addTo(map);
+
+
+  //Club Sportivo Peñarol
+
+  const myIcon96 = L.icon({
+      iconUrl: "img/Club_Sportivo_Peñarol.png",
+      iconSize: [50, 50],
+    });
+    const marker96= L.marker([-31.506862, -68.524565], {icon: myIcon96});
+    var popup = marker96.bindPopup("Club Sportivo Peñarol").openPopup();
+    popup.addTo(map);
+
+
+  //Club Sportivo Desamparados
+
+  const myIcon97 = L.icon({
+      iconUrl: "img/1200px-Escudo_del_Club_Desamparados_de_San_Juan.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker97= L.marker([-31.5274, -68.563], {icon: myIcon97});
+    var popup = marker97.bindPopup("Club Sportivo Desamparados").openPopup();
+    popup.addTo(map);
+
+
+  //CClub Sportivo Estudiantes
+
+  const myIcon98 = L.icon({
+      iconUrl: "img/Escudo_de_Club_Sportivo_Estudiantes_2017.png",
+      iconSize: [50, 50],
+    });
+    const marker98= L.marker([-33.287212, -66.340921], {icon: myIcon98});
+    var popup = marker98.bindPopup("Club Sportivo Estudiantes").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Juventud Unida Universitario
+
+  const myIcon99= L.icon({
+      iconUrl: "img/Escudo_del_Club_Juventud_de_Unida_San_Luis.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker99= L.marker([-33.298827, -66.314839], {icon: myIcon99});
+    var popup = marker99.bindPopup("Club Atlético Juventud Unida Universitario").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Acassuso
+
+  const myIcon100= L.icon({
+      iconUrl: "img/Club_acassuso_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker100= L.marker([-34.481656, -58.583108], {icon: myIcon100});
+    var popup = marker100.bindPopup("Club Atlético Acassuso").openPopup();
+    popup.addTo(map);
+
+
+  //Argentino de Quilmes
+
+  const myIcon101= L.icon({
+      iconUrl: "img/Argentino_de_quilmes.png",
+      iconSize: [50, 50],
+    });
+    const marker101= L.marker([-34.7155, -58.249], {icon: myIcon101});
+    var popup = marker101.bindPopup("Argentino de Quilmes").openPopup();
+    popup.addTo(map);
+
+
+  //Cañuelas Fútbol Club
+
+  const myIcon102= L.icon({
+      iconUrl: "img/Escudo_del_Cañuelas_Fútbol_Club.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker102= L.marker([-35.049629, -58.746805], {icon: myIcon102});
+    var popup = marker102.bindPopup("Cañuelas Fútbol Club").openPopup();
+    popup.addTo(map);
+  
+  
+  //Club Atlético Colegiales (Argentina)
+
+  const myIcon103= L.icon({
+      iconUrl: "img/Colegiales_arg_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker103= L.marker([-34.5381, -58.5257], {icon: myIcon103});
+    var popup = marker103.bindPopup("Club Atlético Colegiales (Argentina)").openPopup();
+    popup.addTo(map);
+
+
+  //Club Comunicaciones
+
+  const myIcon104= L.icon({
+      iconUrl: "img/Comunicaciones_badge.png",
+      iconSize: [50, 50],
+    });
+    const marker104= L.marker([-34.593722, -58.488528], {icon: myIcon104});
+    var popup = marker104.bindPopup("Club Comunicaciones").openPopup();
+    popup.addTo(map);
+
+
+  //Defensores Unidos
+
+  const myIcon105= L.icon({
+      iconUrl: "img/Defensores_unidos_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker105= L.marker([-34.104583, -59.017728], {icon: myIcon105});
+    var popup = marker105.bindPopup("Defensores Unidos").openPopup();
+    popup.addTo(map);
+
+
+  //Deportivo Armenio
+
+  const myIcon106= L.icon({
+      iconUrl: "img/Dep_armenio_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker106= L.marker([-34.376295, -58.730308], {icon: myIcon106});
+    var popup = marker106.bindPopup("Deportivo Armenio").openPopup();
+    popup.addTo(map);
+
+
+  //Deportivo Merlo
+
+  const myIcon107= L.icon({
+      iconUrl: "img/Escudo_del_Club_Deportivo_Merlo.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker107= L.marker([-34.680408, -58.732975], {icon: myIcon107});
+    var popup = marker107.bindPopup("Deportivo Merlo").openPopup();
+    popup.addTo(map);
+
+
+  //Sportivo Dock Sud
+
+  const myIcon108= L.icon({
+      iconUrl: "img/Escudo_del_Club_Deportivo_Merlo.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker108= L.marker([-34.658120, -58.344795], {icon: myIcon108});
+    var popup = marker108.bindPopup("Sportivo Dock Sud").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Fénix
+
+  const myIcon109= L.icon({
+      iconUrl: "img/Club_Fenix_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker109= L.marker([-34.596940, -58.825881], {icon: myIcon109});
+    var popup = marker109.bindPopup("Club Atlético Fénix").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Ituzaingó
+
+  const myIcon110= L.icon({
+      iconUrl: "img/Club_ituzaingo_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker110= L.marker([-34.665636, -58.663978], {icon: myIcon110});
+    var popup = marker110.bindPopup("Club Atlético Ituzaingó").openPopup();
+    popup.addTo(map);
+
+
+  //JJ Urquiza
+
+  const myIcon111= L.icon({
+      iconUrl: "img/JJUrquiza.png",
+      iconSize: [50, 50],
+    });
+    const marker111= L.marker([-34.554393, -58.618777], {icon: myIcon111});
+    var popup = marker111.bindPopup("JJ Urquiza").openPopup();
+    popup.addTo(map);
+
+  //Club Atlético Los Andes
+
+  const myIcon112= L.icon({
+      iconUrl: "img/1920px-Escudo_del_Club_Atlético_Los_Andes.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker112= L.marker([-34.755278, -58.42], {icon: myIcon112});
+    var popup = marker112.bindPopup("Club Atlético Los Andes").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético San Miguel
+
+  const myIcon113= L.icon({
+      iconUrl: "img/Escudo_C.A.S.M.png",
+      iconSize: [50, 50],
+    });
+    const marker113= L.marker([-34.513635, -58.706384], {icon: myIcon113});
+    var popup = marker113.bindPopup("Club Atlético San Miguel").openPopup();
+    popup.addTo(map);
+
+
+  //Talleres de Remedios de Escalada
+
+  const myIcon114= L.icon({
+      iconUrl: "img/Talleres_ba_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker114= L.marker([-34.721664, -58.404089], {icon: myIcon114});
+    var popup = marker114.bindPopup("Talleres de Remedios de Escalada").openPopup();
+    popup.addTo(map);
+
+
+  //UAI Urquiza
+
+  const myIcon115= L.icon({
+      iconUrl: "img/Club_dep_uaiurquiza_crest.png",
+      iconSize: [50, 50],
+    });
+    const marker115= L.marker([-34.595733, -58.525636], {icon: myIcon115});
+    var popup = marker115.bindPopup("UAI Urquiza").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Villa San Carlos
+
+  const myIcon116= L.icon({
+      iconUrl: "img/225px-Villa_sancarlos_logo.png",
+      iconSize: [50, 50],
+    });
+    const marker116= L.marker([-34.873515, -57.862501], {icon: myIcon116});
+    var popup = marker116.bindPopup("Club Atlético Villa San Carlos").openPopup();
+    popup.addTo(map);
+
+
+  //Club Atlético Talleres (Perico)
+
+  const myIcon117= L.icon({
+      iconUrl: "img/Club_Atletico_Talleres_de_Ciudad_Perico.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker117= L.marker([-24.381236, -65.112468], {icon: myIcon117});
+    var popup = marker117.bindPopup("Club Atlético Talleres (Perico)").openPopup();
+    popup.addTo(map);
+
+
+    //Asociación Cultural y Deportiva Altos Hornos Zapla
+
+  const myIcon118= L.icon({
+      iconUrl: "img/Asociación_Cultural_y_Deportiva_Altos_Hornos_Zapla.png",
+      iconSize: [50, 50],
+    });
+    const marker118= L.marker([-24.257226, -65.210149], {icon: myIcon118});
+    var popup = marker118.bindPopup("Asociación Cultural y Deportiva Altos Hornos Zapla").openPopup();
+    popup.addTo(map);
+
+
+    //Club Atlético Monterrico San Vicente
+
+  const myIcon119= L.icon({
+      iconUrl: "img/1920px-Club_Monterrico_San_Vicente.png",
+      iconSize: [50, 50],
+    });
+    const marker119= L.marker([-24.434824, -65.171157], {icon: myIcon119});
+    var popup = marker119.bindPopup("Club Atlético Monterrico San Vicente").openPopup();
+    popup.addTo(map);
+
+
+    //Club Sociedad de Tiro y Gimnasia
+
+  const myIcon120= L.icon({
+      iconUrl: "img/cropped.png.png",
+      iconSize: [50, 50],
+    });
+    const marker120= L.marker([-24.226968, -64.867948], {icon: myIcon120});
+    var popup = marker120.bindPopup("Club Sociedad de Tiro y Gimnasia").openPopup();
+    popup.addTo(map);
+
+
+    //Club Deportivo Villa San Antonio
+
+  const myIcon121= L.icon({
+      iconUrl: "img/Club_Deportivo_Villa_San_Antonio.png",
+      iconSize: [50, 50],
+    });
+    const marker121= L.marker([-24.820889, -65.419189], {icon: myIcon121});
+    var popup = marker121.bindPopup("Club Deportivo Villa San Antonio").openPopup();
+    popup.addTo(map);
+
+
+    //Club Atlético Almirante Brown (Lules)
+
+  const myIcon122= L.icon({
+      iconUrl: "img/Escudo_Almirante_Brown.png",
+      iconSize: [50, 50],
+    });
+    const marker122= L.marker([-26.923689, -65.333716], {icon: myIcon122});
+    var popup = marker122.bindPopup("Club Atlético Almirante Brown (Lules)").openPopup();
+    popup.addTo(map);
+    
+    //Club Sportivo Guzmán
+
+  const myIcon123= L.icon({
+      iconUrl: "img/Escudo_Club_Sportivo_Guzmán_Tucumán.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker123= L.marker([-26.818921, -65.187006], {icon: myIcon123});
+    var popup = marker123.bindPopup("Club Sportivo Guzmán").openPopup();
+    popup.addTo(map);
+
+
+    //Club Sol de América (Formosa)
+
+  const myIcon124= L.icon({
+      iconUrl: "img/195f.png",
+      iconSize: [50, 50],
+    });
+    const marker124= L.marker([-26.170783, -58.179106], {icon: myIcon124});
+    var popup = marker124.bindPopup("Club Sol de América (Formosa)").openPopup();
+    popup.addTo(map);
+
+
+    //Club Bartolomé Mitre
+
+  const myIcon125= L.icon({
+      iconUrl: "img/Club_Bartolomé_Mitre.png",
+      iconSize: [50, 50],
+    });
+    const marker125= L.marker([-27.382836, -55.917968], {icon: myIcon125});
+    var popup = marker125.bindPopup("Club Bartolomé Mitre").openPopup();
+    popup.addTo(map);
+
+
+    //Club Deportivo Guaraní Antonio Franco
+
+  const myIcon126= L.icon({
+      iconUrl: "img/Escudo_del_Club_Guarani_Antonio_Franco.svg.png",
+      iconSize: [50, 50],
+    });
+    const marker126= L.marker([-27.356740, -55.895684], {icon: myIcon126});
+    var popup = marker126.bindPopup("Club Deportivo Guaraní Antonio Franco").openPopup();
+    popup.addTo(map);
+
+
+    //Ferroviario Corrientes Fútbol Club
+
+  const myIcon127= L.icon({
+      iconUrl: "img/Green_and_black_shield_(generic).png",
+      iconSize: [50, 50],
+    });
+    const marker127= L.marker([-27.493590, -58.781673], {icon: myIcon127});
+    var popup = marker127.bindPopup("Ferroviario Corrientes Fútbol Club").openPopup();
+    popup.addTo(map);
+
+
+    //img/Club_Atlético_Huracán_Corrientes.png
+
+  const myIcon128= L.icon({
+      iconUrl: "img/Club_Atlético_Huracán_Corrientes.png",
+      iconSize: [50, 50],
+    });
+    const marker128= L.marker([-27.483778, -58.829883], {icon: myIcon128});
+    var popup = marker128.bindPopup("img/Club_Atlético_Huracán_Corrientes.png").openPopup();
+    popup.addTo(map);
+
+
+    //Club Atlético Defensores de Vilelas
+
+  const myIcon129= L.icon({
+      iconUrl: "img/39430.png",
+      iconSize: [50, 50],
+    });
+    const marker129= L.marker([-27.513296, -58.943469], {icon: myIcon129});
+    var popup = marker129.bindPopup("Club Atlético Defensores de Vilelas").openPopup();
+    popup.addTo(map);
+
+  
+
+  
+
+  // layer controller 
+  const baseMaps = {
+    "OSM": osm,
+    "World imagery map": worldImagery,
+    "Dark": dark,
+    "Google Street": googleStreets,
+  };
+
+  const overlayMaps = {
+    //Premiera Division - 1st tier
+    // "River Plate"
+    // "Boca Juniors"
+    // "Racing Club"
+    // "Independiente"
+    // "San Lorenzo"
+    // "Vélez Sarsfield"
+    // "Tigre"
+    // "Banfield"
+    // "Argentinos Juniors"
+    // "Arsenal Sarandí"
+    // "Barracas Central"
+    // "Huracán"
+    // "Defensa y Justicia"
+    // "Platense"
+    // "Club Atlético Lanús"
+    // "Estudiantes de La Plata"
+    // "Club de Gimnasia y Esgrima La Plata"
+    // "Club Atlético Aldosivi"
+    // "Atlético Tucumán"
+    // "Central Córdoba de Santiago del Estero"
+    // "Club Atlético Colón"
+    // "Godoy Cruz Antonio Tomba"
+    // "Newell's Old Boys"
+    // "Club Atlético Patronato"
+    // "Rosario Central" 
+    // "Club Atlético Sarmiento"
+    // "Talleres de Córdoba"
+    // "Unión de Santa Fe"
+    //PremeriaB Nacional - 2nd tier
+  //   "Club Agropecuario Argentino": marker29,
+  //   "All Boys": marker30,
+  //   "Club Almagro": marker31,
+  //   "Club Almirante Brown": marker32,
+  //   "Club Atlético Alvarado": marker33,
+  //   "Club Atlético Atlanta": marker34,
+  //   "Atlético de Rafaela": marker35,
+  //   "Club Atlético Belgrano": marker36,
+  //   "Club Atlético Brown": marker37,
+  //   "Chacarita Juniors": marker38,
+  //   "Chaco For Ever": marker39,
+  //   "Defensores de Belgrano": marker40,
+  //   "Deportivo Madryn": marker41,
+  //   "Deportivo Maipú": marker42,
+  //   "Deportivo Morón": marker43,
+  //   "Deportivo Riestra": marker44,
+  //   "Estudiantes de Buenos Aires": marker45,
+  //   "Estudiantes de Río Cuarto": marker46,
+  //   "Ferro Carril Oeste": marker47,
+  //   "CSD Flandria": marker48,
+  //   "Gimnasia y Esgrima de Jujuy": marker49,
+  //   "Gimnasia y Esgrima de Mendoza": marker50,
+  //   "Club Atlético Güemes": marker51,
+  //   "Guillermo Brown de Puerto Madryn": marker52,
+  //   "Independiente Rivadavia": marker53,
+  //   "Instituto Atlético Central Córdoba": marker54,
+  //   "Club Atlético Mitre": marker55,
+  //   "Club Atlético Nueva Chicago": marker56,
+  //   "Quilmes Atlético Club": marker57,
+  //   "Sacachispas Fútbol Club": marker58,
+  //   "San Martín de San Juan": marker59,
+  //   "San Martín de Tucumán": marker60,
+  //   "Club Atlético San Telmo": marker61,
+  //   "Club y Biblioteca Ramón Santamarina": marker62,
+  //   "Club Atlético Temperley": marker63,
+  //   "CSyD Tristán Suárez": marker64,
+  //   "Villa Dálmine": marker65,
+  //   // Torneo Federal A - 3rd tier
+  //   // norte
+  //   "Club Atlético y Social Defensores de Belgrano": marker66,
+  //   "Club Atlético Douglas Haig": marker67,
+  //   "Club Atlético Sarmiento (Resistencia)": marker68,
+  //   "Club Atlético Racing": marker69,
+  //   "Club Sportivo Belgrano (San Francisco)": marker70,
+  //   "Club Atlético Boca Unidos": marker71,
+  //   "Club Gimnasia y Esgrima (Concepción del Uruguay)": marker72,
+  //   "Club Atlético Paraná": marker73,
+  //   "Club Defensores de Pronunciamiento": marker74,
+  //   "Club Deportivo Juventud Unida": marker75,
+  //   "Club Sportivo General San Martín": marker76,
+  //   "Club Mutual Crucero del Norte": marker77,
+  //   "Centro Juventud Antoniana": marker77,
+  //   "Club Atlético Central Norte (Salta)": marker77,
+  //   "Club de Gimnasia y Tiro": marker80,
+  //   "Sportivo Atlético Club": marker81,
+  //   "Club Atlético Unión (Sunchales)": marker82,
+  // //   // sur
+  //   "Círculo Deportivo de Comandante Nicanor Otamendi": marker83,
+  //   "Club Atlético Sansinena Social y Deportivo": marker84,
+  //   "Club Atlético Liniers": marker85,
+  //   "Club Villa Mitre": marker86,
+  //   "Club Olimpo": marker87,
+  //   "Club Atlético Social y Deportivo Camioneros": marker88,
+  //   "Club Ciudad de Bolívar": marker89,
+  //   "Club Atlético Independiente (Chivilcoy)": marker90,
+  //   "Club Deportivo Argentino (Monte Maíz)": marker91,
+  //   "Club Atlético Huracán Las Heras": marker92,
+  //   "Club Cipolletti": marker93,
+  //   "Club Social y Deportivo Sol de Mayo": marker94,
+  //   "Club Sportivo Peñarol": marker95,
+  //   "Club Sportivo Desamparados": marker96,
+  //   "Club Sportivo Estudiantes": marker97,
+  //   "Club Atlético Juventud Unida Universitario": marker98,
+  // //   // Primera B - 3rd tier
+  //   "Club Atlético Acassuso": marker99,
+  //   "Argentino de Quilmes": marker100,
+  //   "Cañuelas Fútbol Club": marker101,
+  //   "Club Atlético Colegiales (Argentina)": marker102,
+  //   "Club Comunicaciones": marker103,
+  //   "Defensores Unidos": marker104,
+  //   "Deportivo Armenio": marker105,
+  //   "Deportivo Merlo": marker106,
+  //   "Sportivo Dock Sud": marker107,
+  //   "Club Atlético Fénix": marker108,
+  //   "Club Atlético Ituzaingó": marker109,
+  //   "JJ Urquiza": marker110,
+  //   "Club Atlético Los Andes": marker111,
+  //   "Club Atlético San Miguel": marker112,
+  //   "Talleres de Remedios de Escalada": marker113,
+  //   "UAI Urquiza": marker113, *****------------*******
+  //   "Club Atlético Villa San Carlos": marker114,
+  //   // Torneo Regional Federal Amateur -4th tier (selected clubs due to lack of information)
+  //   //norte
+    // "Club Atlético Talleres (Perico)": marker115,
+    // "Asociación Cultural y Deportiva Altos Hornos Zapla": marker116,
+    // "Club Atlético Monterrico San Vicente": marker117,
+    // "Club Sociedad de Tiro y Gimnasia": marker118,
+    // "Club Deportivo Villa San Antonio": marker119,
+    // "Club Atlético Almirante Brown (Lules)": marker120,
+    // "Club Sportivo Guzmán": marker121,
+  //   // Litoral Norte
+  // "Club Sol de América (Formosa)": marker122,
+  //   "Club Bartolomé Mitre": marker123,
+    // "Club Deportivo Guaraní Antonio Franco": marker124,
+    // "Ferroviario Corrientes Fútbol Club": marker125,
+  //   "Club Atlético Huracán Corrientes": marker126,
+     "Club Atlético Defensores de Vilelas": marker128,
+  //   "Club Social y Deportivo Fontana": marker129,
+  //   "Club Atlético Resistencia Central": marker130,
+  //   "Club Atlético Villa Alvear": marker131,
+  //   // centro
+  //   "Club Atlético Estudiantes (Santiago del Estero)": marker132,
+  //   "Club Atlético Sarmiento (La Banda)": marker133,
+  //   "Club Atlético Policial": marker134,
+  //   "Club Atlético San Lorenzo de Alem": marker135,
+  //   "Club Sportivo Villa Cubas": marker136,
+  //   "Club Atlético San Martín (El Bañado)": marker137,
+  //   "Andino Sport Club": marker138,
+  //   "Club Atlético Aeronáutico Biblioteca y Mutual Sarmiento": marker139,
+  //   "Club Atlético Argentino Peñarol": marker140,
+  //   "Asociación Deportiva 9 de Julio (Morteros)": marker141,
+  //   "Club Sportivo 9 de Julio": marker142,
+  //   "Club Sportivo y Biblioteca Atenas": marker143,
+  //   "Club Atlético Las Palmas": marker144,
+  //   "Club Atlético Universitario (Córdoba)": marker145,
+  //   "Club Atlético Alumni (Villa María)": marker146,
+  //   "Club Atlético General Paz Juniors": marker147,
+  //   // Litoral Sur
+  //   "Club Atlético Belgrano (Paraná)": marker148,
+  //   "Club Atlético Uruguay": marker149,
+  //   "Club Deportivo Libertad": marker150,
+  //   "Club Sportivo Ben Hur": marker151,
+  //   "Club Atlético 9 de Julio (Rafaela)": marker152,
+  //   "Club Atlético San Jorge": marker153,
+  //   "Club Atlético Gimnasia y Esgrima (Santa Fe)": marker154,
+  //   "Club Sportivo Bernardino Rivadavia": marker155,
+  //   "Sport Club Cañadense": marker156,
+  //   "Club Atlético Carcarañá": marker157,
+  //   // cuyo
+  //   "Club Atlético Argentino (Mendoza)": marker158,
+  //   "Gutiérrez Sport Club": marker159,
+  //   "Luján Sport Club": marker160,
+  //   "Atlético Club San Martín": marker161,
+  //   "Club Atlético Palmira": marker162,
+  //   "Sport Club Pacífico": marker163,
+  //   "Club Huracán (San Rafael)": marker164,
+  //   "Club Atlético Unión (Villa Krause)": marker165,
+  //   "Club Atlético Colón Junior": marker166,
+  //   "Club Atlético de la Juventud Alianza": marker167,
+  //   "Club Sportivo Juan Bautista Del Bono": marker168,
+  //   "Club Jorge Newbery (Villa Mercedes)": marker169,
+  //   // Bonaerense Pampeana Norte
+  //   "Club Atlético Juventud (Pergamino)": marker170,
+  //   "Club de Regatas San Nicolás": marker171,
+  //   "Club Social y Deportivo La Emilia": marker172,
+  //   "Club Defensores de Salto": marker173,
+  //   "Club Atlético Mariano Moreno": marker174,
+  //   "Club Atlético Villa Belgrano": marker175,
+  //   "Club Atlético El Linqueño": marker176,
+  //   "Club Rivadavia": marker177,
+  //   "Club Atlético Once Tigres": marker178,
+  //   "Viamonte Fútbol Club": marker179,
+  //   "Social Atlético Televisión": marker180,
+  //   // Bonaerense Pampeana Sur
+  //   "Club Atlético All Boys (Santa Rosa)": marker181,
+  //   "Bella Vista de Bahía Blanca": marker182,
+  //   "Club Atlético Huracán (Ingeniero White)": marker183,
+  //   "Club Atlético Sporting": marker184,
+  //   "Club Atlético Independiente (San Cayetano)": marker185,
+  //   "Club Atlético Huracán (Tres Arroyos)": marker186,
+  //   "Racing Athletic Club": marker187,
+  //   "Club Atlético Estudiantes (Olavarría)": marker188,
+  //   "Club Ferrocarril Roca (Las Flores)": marker189,
+  //   "Club Atlético Ayacucho": marker190,
+  //   "Club Atlético Kimberley": marker191,
+  //   // Patagónica
+  //   "Club Atlético Germinal": marker192,
+  //   "Racing Club (Trelew)": marker193,
+  //   "Comisión de Actividades Infantiles": marker194,
+  //   "Club Atlético Huracán (Comodoro Rivadavia)": marker195,
+  //   "Club Atlético Jorge Newbery (Comodoro Rivadavia)": marker196,
+  //   "Club Deportivo Cruz del Sur": marker197,
+  //   "Club Social y Deportivo Patagones": marker198,
+  //   "Club Social y Deportivo General Roca": marker199,
+  //   "Asociación Deportiva Centenario": marker200,
+  //   "Club Atlético Maronese": marker201,
+  //   "Club Social y Deportivo Alianza (Cutral Co)": marker202,
+  //   "Club Atlético Independiente (Neuquén)": marker203,
+  //   "Asociación Atlético Boxing Club": marker204,
+  //   // Primera C - 4th tier
+  //   "Argentino de Merlo": marker205,
+  //   "Club Atlético Atlas": marker206,
+  //   "A.D. Berazategui": marker207,
+  //   "Central Córdoba de Rosario": marker208,
+  //   "Club Atlético Claypole": marker209,
+  //   "Deportivo Español": marker210,
+  //   "Club El Porvenir": marker211,
+  //   "CA Excursionistas": marker212,
+  //   "Club Atlético General Lamadrid": marker213,
+  //   "Deportivo Laferrere": marker214,
+  //   "Club Leandro N. Alem": marker215,
+  //   "Club Social y Deportivo Liniers": marker216,
+  //   "Club Luján": marker217,
+  //   "Club Ferrocarril Midland": marker218,
+  //   "Club Atlético Puerto Nuevo": marker219,
+  //   "Real Pilar Fútbol Club": marker220,
+  //   "San Martín de Burzaco": marker221,
+  //   "Sportivo Italiano": marker222,
+  //   "Victoriano Arenas": marker223,
+  //   // Regional leagues - 5th tier (selected clubs due to lack of information)
+  //   // Primera D - 5th tier
+  //   "Argentino de Rosario": marker224,
+  //   "Central Ballester": marker225,
+  //   "Centro Social y Recreativo Español": marker226,
+  //   "Defensores de Cambaceres": marker227,
+  //   "Juventud Unida de San Miguel": marker228,
+  //   "Club Atlético Lugano": marker229,
+  //   "Club Mercedes": marker230,
+  //   "Club Social Cultural y Deportivo Muñiz": marker231,
+  //   "Deportivo Paraguayo": marker232,
+  //   "Sportivo Barracas": marker233,
+  //   "Club Social y Deportivo Yupanqui": marker234,
+  }
+
+  L.control.layers(baseMaps, overlayMaps).addTo(map);
+</script> 
+
+
+</body>
+
+</html>

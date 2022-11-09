@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet</title>
+
+  <!--Leaflet css-->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" /> -->
+  <script src="/leaflet/leaflet.js" defer></script>
+  <script type="module" src="javascript/app.js" defer></script>
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+
+
+<body>
+
+  <header class="headercontainer">
+    <img src="./img/Argentina_national_football_team_logo.svg.png" alt="Argentine Fa" height="100" width="125">
+    <h1 class="header__title"> <strong> Argentine Football Clubs </strong></h1>
+
+    <nav class="header__nav">
+      <ul class="header__ul">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="clubs">Clubs</a>
+        </li>
+        <li>
+          <a href="competitions">Competitions</a>
+        </li>
+        <li>
+          <a href="about">About</a>
+        </li>
+        <li>
+          <a href="contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <img src="./img/Argentina_national_football_team_logo.svg.png" alt="Argentine Fa" height="100" width="125">
+  </header>
+
+  <main class="maincontainer">
+    <article class="article__main">
+      <!-- <img class="img1__main" src="img/Maradona-Mundial_86_con_la_copa.jpg" alt="Maradona lifting the world cup" width="150" height="150"> -->
+      <h2 class="h2__main">Instructions</h2>
+      <ol class="ol__main">
+          <li class="li__main">Zoom in and out using your mouse or the zoom in and out buttons on the top left of the map</li>
+          <li class="li__main">To change map, click the white box in the top right corner of the map</li>
+          <li class="li__main">Drag your mouse across the map or use arrow keys in the direction you want</li>
+          <li class="li__main"> Click the badges on the map to see the name of the football club</li> 
+          <li class="li__main"> If you are unable to use the map then please click on 'clubs' link in the navigation bar at the top of the page</li>
+      </p>
+      <!-- <img class="img2__main" src="img/Argentina_team_in_St._Petersburg_(cropped)_Messi.jpg" alt="Messi" width="185" height="150"> -->
+    </article>
+    <div aria-label="map" id="map"></div> 
+  </main>
+
+  <footer class="footercontainer">
+    
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" height="100" width="150">
+    
+    <p class="author">Author - Michael Lyon</p>
+    <p class="copy">&copy;</p>
+    <p class="trade">&trade;</p>
+  </footer>
+
+
+</body>
+
+</html>
