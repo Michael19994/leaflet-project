@@ -38,7 +38,7 @@ const baseMaps = {
 };
 
 
-L.control.layers(baseMaps,).addTo(map);
+L.control.layers(baseMaps).addTo(map);
 
 
 footballClubs.map((club) => {
@@ -51,7 +51,6 @@ footballClubs.map((club) => {
     <p>Formed In: ${club.formedIn}</p>
     <p>Stadium Name: ${club.stadiumName}</p>
     <p>Capacity: ${club.stadiumCapacity}</p>
-    <p>Coordinates of Stadium: ${club.coordinates}</p>
     <p>${club.history}</p>
   </div>
   `;
