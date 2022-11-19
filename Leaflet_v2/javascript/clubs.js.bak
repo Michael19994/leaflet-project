@@ -40,27 +40,6 @@ footballClubs.map( (club) => {
 });
 container.appendChild(dataList);
 
-function generateTemplate(footballClub){
-
-  const popupTemplate = `
-  <div class="clubspage__popup">
-    <h2>${footballClub.clubName}</h2>
-    <img class="clubbox__img" src=${footballClub.badgeImageUrl}>
-    <p>Location: ${footballClub.location} </p>
-    <p>Formed In: ${footballClub.formedIn}</p>
-    <p>Stadium Name: ${footballClub.stadiumName}</p>
-    <p>Capacity: ${footballClub.stadiumCapacity}</p>
-    <p class="history__popup">${footballClub.history}</p>
-  </div>`;
-
-  return popupTemplate;
-}
-
-
-const template2 = generateTemplate(footballClubs[0]);
-const element = document.getElementById("club__popup");
-element.innerHTML =  template2;  
-// console.log(clubFound);
 
 const searchBtn = document.getElementById('searchClubsBtn');
 searchBtn.addEventListener('click', (event) => {
@@ -72,25 +51,27 @@ searchBtn.addEventListener('click', (event) => {
     club.clubName === listChoice.value);
     console.log(clubFound);
     
-    const template = generateTemplate(clubFound);
+    const popupTemplate = `
+    <div class="clubspage__popup">
+      <h2>${clubFound.clubName}</h2>
+      <img class="clubbox__img" src=${clubFound.badgeImageUrl}>
+      <p>Location: ${clubFound.location} </p>
+      <p>Formed In: ${clubFound.formedIn}</p>
+      <p>Stadium Name: ${clubFound.stadiumName}</p>
+      <p>Capacity: ${clubFound.stadiumCapacity}</p>
+      <p class="history__popup">${clubFound.history}</p>
+    </div>`;
 
     listChoice.value = "";
 
     const element = document.getElementById("club__popup");
-    element.innerHTML =  template;  
+    element.innerHTML =  popupTemplate;  
     console.log(clubFound);
     
   })
   
 
 
-  function getRandomIntBetween(min, max){
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-
-// generate template
-// get a club found.  On load use first club in array.
 
 // const dataList = "";
 // footballClubs.map( (club) => {

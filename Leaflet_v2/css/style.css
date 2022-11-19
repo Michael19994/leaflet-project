@@ -1,16 +1,29 @@
 body {
-  background-color: ghostwhite;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  color: #173E69;
 }
 
-#map {
-  width: 100%;
-  height: 100vh;
+a, a:visited {
+  color: #173E69;
+  padding: 9px;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: gold;
+}
+
+nav  a, nav a:visited {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: 173E69
 }
 
 .headercontainer {
   display: flex;
-  background-color: skyblue;
-  color: white;
+  background-color: #C7E9FF;
   padding: 1rem;
 }
 
@@ -18,11 +31,12 @@ body {
   margin: auto;
   font-weight: 700;
   font-size: 5rem;
-  font-style: oblique;      
+  font-style: normal;
+  font-family: 'Times New Roman', Times, serif;     
 }
 
 .header__nav {
-
+  
 }
 
 .header__ul {
@@ -37,38 +51,95 @@ li {
   right: 0;
 }
 
-a {
-  font-size: 2rem;
-  padding: 9px;
-  color: #fff;
-  text-decoration: none;
-}
 
-a:hover {
-  color: gold;
-}
+
+
+/* Main */
 
 .maincontainer {
-  color: skyblue; 
+  
 }
 
-.article__main {
-  display: block;
-}
-
-.h2__main {
+.titleofhome {
+  font-size: 3rem;
   text-align: center;
+  color: #173E69;
+}
+
+.introduction__container {
+  display: block;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+  background-color: #c7e9ff;
   font-size: 1.5rem;
+  padding-bottom: 1rem;
 }
 
-.img1__main {
-  display: flex;
-  margin-right: auto;
+.introuction__header {
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 1.5rem;
 }
 
-.img2__main {
+.introduction__text {
+  display: block;
+  margin: 4rem;
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+.img1__home {
+  top: -200px;
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  object-position: 60% 20%;
+}
+
+.img2__home {
+  top: -200px;
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  object-position: 60% 40%;
+}
+
+#map {
+  margin: 0 auto;
+  max-width: 88%;
+  height: 100vh;
+  border: solid 5px black;
+}
+
+.popup {
+  /* border: 2px solid #f00; */
+  padding: 2.5rem 1rem;
+  margin: auto;
+  width: 80%;
+  background-color: #c7e9ff;
+  color: #173E69;
+  border: black solid 2px;
+  box-shadow: black 5px 2.5px;
+}
+
+.img__popup {
+  width: 200px;
+  height: 150px;
+}
+
+.instructions__container {
   display: flex;
-  margin-left: auto;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+  background-color: #c7e9ff;
+  font-size: 1.5rem;
+  padding: 4rem;
+  margin-top: 4rem;
+}
+
+.h3__instructionshome {
+  text-align: center;
+  font-size: 1.7rem;
 }
 
 .ol__main {
@@ -79,6 +150,15 @@ a:hover {
   display: block;
 }
 
+.li__main a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+
+
+/* Footer */
+
 .footercontainer {
   display: flex;
   padding: 1rem;     
@@ -87,6 +167,8 @@ a:hover {
 .img__footer {
   margin: auto;
   padding: 1rem;
+  width: 10%;
+  height: 150px;
 }
 
 .author {
@@ -101,19 +183,140 @@ a:hover {
   
 }
 
-.popup {
-  /* border: 2px solid #f00; */
-  padding: 2.5rem 1rem;
-  margin: auto;
-  width: 80%;
-  background-color: skyblue;
-  color: #fff;
-  border: black solid 2px;
-  box-shadow: black 5px 2.5px;
+
+
+/* Clubs.HTML */
+
+.maincontainer__clubs {
+  background-color: #fff;
 }
 
-.img__popup {
-  width: 200px;
-  height: 150px;
+.titleofclubs {
+  font-size: 3rem;
+  text-align: center;
   
+}
+
+
+
+.clubs__ol {
+
+}
+
+#clubsearch {
+  
+}
+
+#clubListChoice {
+  width: 40%;
+  height: 55px;
+  border: 5px solid #C7E9FF;
+  background-color: #173E69;
+  color: #C7E9FF;
+  padding: 2rem;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 2rem;
+  box-shadow: 3px 2px #C7E9FF;
+  margin-right: auto;
+}
+
+#searchClubsBtn {
+  padding: 1.5rem;
+  color: #173E69;
+  background-color: #C7E9FF;
+  border-radius: 30px;
+  font-size: 1rem;
+  margin: 0;
+  border: black solid 3px;
+}
+
+
+
+.clubspage__popup {
+  padding: 2.5rem 1rem;
+  
+  background-color: #C7E9FF;
+  color: #173E69;
+  border: black solid 6px;
+  
+}
+
+.clubbox__img {
+  width: 600px;
+  height: 500px;
+}
+
+#club__popup {
+  text-align: center;
+  padding: 3rem;
+  font-size: 2rem;
+}
+
+
+.history__popup {
+  margin: 0 4rem ;
+  line-height: 1.6;
+  text-align: justify;
+  padding-top: 1.5rem;
+}
+
+.instructionsdiv__clubs {
+  text-align: center;
+  background-color: #C7E9FF;
+}
+
+/* API.HTML  */
+
+
+
+
+/* Competitions.HTML */
+
+
+
+
+/* ABOUT.HTML */
+
+.about__maincontainer {
+
+}
+
+.about__who {
+  color: #173E69;
+  background-color: #C7E9FF;
+  border: solid 4px #173E69;
+  margin: 1.5rem;
+  padding: 2rem;
+}
+
+.about__distefano {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  object-position: 60% 15%;
+}
+
+.about__project {
+  color: #173E69;
+  background-color: #C7E9FF;
+  border: solid 4px #173E69;
+  margin: 1.5rem;
+  padding: 2rem;
+}
+
+.about__thanks {
+  color: #173E69;
+  background-color: #C7E9FF;
+  border: solid 4px #173E69;
+  margin: 1.5rem;
+  padding: 2rem;
+}
+
+.about__feedback {
+  color: #173E69;
+  background-color: #C7E9FF;
+  border: solid 4px #173E69;
+  margin: 1.5rem;
+  padding: 2rem;
 }

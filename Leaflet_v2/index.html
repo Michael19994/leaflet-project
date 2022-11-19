@@ -47,33 +47,77 @@
   </header>
 
   <main class="maincontainer">
-    <article class="article__main">
-      <!-- <img class="img1__main" src="img/Maradona-Mundial_86_con_la_copa.jpg" alt="Maradona lifting the world cup" width="150" height="150"> -->
-      <h2 class="h2__main">Instructions</h2>
-      <ol class="ol__main">
+
+    <h2 class="titleofhome"> Home </h2>
+
+    <div class="introduction__container">
+      <h3 class="introuction__header">Welcome to Argentine Football Clubs Website</h3>
+      <p class="introduction__text">
+        Experience an interactive map below of football clubs in Argentina, there are a list of instructions below the map on how to use the Map.
+        The map contains datasets of each club which can be viewed in the map, <a href="/clubs.html">Clubs</a> <a href="/api.html">API</a> 
+        If you are enjoying the content of the website, then please consider supporting us by donating to our Patreon so quality 
+        content can be created in the future. Have a look at other content we have created on our Github
+        Want to get in touch with us? What should we create next? send us a cheeky dm on LinkedIn!
+      </p>
+    </div>
+
+    <div alt="Map based on Argentinian Football Clubs" aria-label="map" id="map"></div> 
+
+    <div class="instructions__container">
+
+      <figure>
+        <img class="img1__home"
+            srcset="img/Maradona-Mundial_86_con_la_copa.jpg 400w, img/Maradona-Mundial_86_con_la_copa.jpg 800w"
+            sizes="(max-width: 600px) 480px, 800px"
+            src="img/Maradona-Mundial_86_con_la_copa.jpg"
+            alt="" 
+        />
+        <figcaption> Diego Maradona lifting the 1986 World Cup </figcaption>
+      </figure>
+
+      
+    <article class="article__home">
+
+      <h3 class="h3__instructionshome">Instructions</h3>
+        <ol class="ol__main">
           <li class="li__main">Zoom in and out using your mouse or for more control use the zoom in and out buttons on the top left of the map</li>
           <li class="li__main">To change map, click the white box in the top right corner of the map and select by clicking on the box next to the map you wish to use</li>
           <li class="li__main">Drag your mouse across the map or use arrow keys in the direction you want</li>
           <li class="li__main">Click the badges on the map to see the name of the football club and to click off the popup then either click on the map or use the X button in the top right of the popup</li> 
-          <li class="li__main">If you are unable to access the map for any reason at all, please click on 'clubs' link in the navigation bar at the top of the page, the same information is used there </li>
-      </p>
-      <!-- <img class="img2__main" src="img/Argentina_team_in_St._Petersburg_(cropped)_Messi.jpg" alt="Messi" width="185" height="150"> -->
+          <li class="li__main">To see the same information that is on the map, please click <a class="clubs__main" href="/clubs.html"> here </a> </li>
+        </ol>
     </article>
-    <div aria-label="map" id="map"></div> 
+    <figure>
+      <img class="img2__home"
+          srcset="img/Argentina_team_in_St._Petersburg_(cropped)_Messi.jpg 480w, img/Argentina_team_in_St._Petersburg_(cropped)_Messi.jpg 800w"
+          sizes="(max-width: 600px) 480px, 800px"
+          src="img/Argentina_team_in_St._Petersburg_(cropped)_Messi.jpg"
+          alt="" 
+      />
+      <figcaption> Lionel Messi at the 2018 World Cup </figcaption>
+    </figure>
+  
+  </div>
+
   </main>
 
   <footer class="footercontainer">
     
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" height="100" width="150">
-    
-    <p class="author">Author - Michael Lyon</p>
+    <p class="author">Authors - Michael Lyon & Mike Langley</p>
+
+    <a href="https://www.linkedin.com/in/michaellyon19994/">Michael Lyon - LinkedIn</a>
+    <a href="https://github.com/Michael19994" >Michael Lyon - Github</a>
+    <a href="https://www.linkedin.com/in/mike-langley/">Michael Langley - LinkedIn</a>
+    <a href="https://github.com/gm1wkr">Michael Langley - Github</a>
     <p class="copy">&copy;</p>
     <p class="trade">&trade;</p>
+    
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" >
   </footer>
 
 

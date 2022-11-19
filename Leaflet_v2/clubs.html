@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script type="module" src="javascript/clubs.js" defer></script>
-  <link rel="stylesheet" href="/css/clubs.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 
@@ -39,36 +39,62 @@
   </header>
   
 
-  <main class="maincontainer">
-
-
+  <main class="maincontainer__clubs">
+    
+    <h2 class="titleofclubs">Clubs</h2>
+    
     <label for="clubListChoice">
-      <input list="clubList" id="clubListChoice" name="clubListChoice" />
+      <input list="clubList" id="clubListChoice" name="clubListChoice" placeholder="Click here to search a Football Club from Argentina"/>
     </label>
-    <button id="searchClubsBtn">Search</button>
-    <div id="footBallClubSelector">
-
-    </div>
-
-
+    
+    
+    
+    <button id="searchClubsBtn">Search </button>
+    <div id="footBallClubSelector"></div>
+    
+    <figure>
+      <img srcset="./img/Mario_Kempes_Argentina_vs._Holanda.jpg 480w, ./img/Mario_Kempes_Argentina_vs._Holanda.jpg 800w"
+          sizes="(max-width: 600px) 480px, 800px"
+          src="./img/Mario_Kempes_Argentina_vs._Holanda.jpg"
+          alt="Mario Kempes scoring in the 1978 World Cup final" 
+      />
+  </figure>
+    
     <div id="club__popup"></div>
+    
+    <div class="instructionsdiv__clubs">
+      <article class="article__clubs">
+        <h3>Instructions & How to use</h3>
 
+        <ol class="clubs__ol">
+          <li>Instructions 1</li>
+          <li>Instructions 2</li>
+          <li>Instructions 3</li>
+        </ol>
+      </article>
+    </div>
   </main>
 
   
 
   <footer class="footercontainer">
-    
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" height="100" width="150">
-    
-    <p class="author">Author - Michael Lyon</p>
+
+    <p class="author">Authors - Michael Lyon & Mike Langley</p>
+
+    <a href="https://www.linkedin.com/in/michaellyon19994/">Michael Lyon - LinkedIn</a>
+    <a href="https://github.com/Michael19994" >Michael Lyon - Github</a>
+    <a href="https://www.linkedin.com/in/mike-langley/">Michael Langley - LinkedIn</a>
+    <a href="https://github.com/gm1wkr">Michael Langley - Github</a>
     <p class="copy">&copy;</p>
     <p class="trade">&trade;</p>
+    
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <p>&star;</p>
+    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" >
+    
   </footer>
 
 </body>

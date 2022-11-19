@@ -1,4 +1,4 @@
-// clubName, badgeImageURL, coordinates, formedIn, stadiumName, stadiumCapacity, location, history  
+// id, clubName, badgeImageURL, coordinates, formedIn, stadiumName, stadiumCapacity, location, history  
 
 const footballClubs = [
   {
@@ -37,7 +37,7 @@ const footballClubs = [
     On 3 April 1905, a group of Greek and Italian boys (more specifically from Genoa) met in order to find a club. The house where the meeting was arranged was Esteban Baglietto's and 
     the other four people who attended were Alfredo Scarpatti, Santiago Sana and brothers Ioannis (Juan) and Theodoros (Teodoro) Farengas from Chios and Konstantinos Karoulias from Samos. 
     Other important founders members include Arturo Penney, Marcelino Vergara, Luis Cerezo, Adolfo Taggio, Giovanelli, Donato Abbatángelo, Bertolini.In 1913, Boca promoted to Primera División after some previous failed attempts. 
-    This was possible when the Argentine Association decided to increase the number of teams in the league from 6 to 15.[22]In 1925, Boca made its first trip to Europe to play in Spain, Germany and France. 
+    This was possible when the Argentine Association decided to increase the number of teams in the league from 6 to 15. In 1925, Boca made its first trip to Europe to play in Spain, Germany and France. 
     The squad played a total of 19 games, winning 15 of them. For that reason Boca was declared "Campeón de Honor" (Champion of Honour) by the Association.During successive years, Boca consolidated as one of the most popular teams of Argentina, with a huge number of fans not only in the country but worldwide. 
     The club is one of the most successful teams in Argentine football, having won 47 domestic titles (34 league titles and 13 national cups). At international level, Boca Juniors have won 22 titles, with 18 competitions organised by CONMEBOL and four by the Argentine and Uruguayan Associations together.
     `
@@ -166,7 +166,7 @@ const footballClubs = [
     location: "La Paternal, Buenos Aires",
     history: 
     `
-    The club was founded in the Villa Crespo neighbourhood of Buenos Aires on 14 August 1904, by a group of anarchist boys that were part of club "Mártires de Chicago" (chosen in homage to the eight anarchists imprisoned or hanged after the 1886 Haymarket Riot in Chicago).[4] Leandro Ravera Bianchi was named president of the recently created club.
+    The club was founded in the Villa Crespo neighbourhood of Buenos Aires on 14 August 1904, by a group of anarchist boys that were part of club "Mártires de Chicago" (chosen in homage to the eight anarchists imprisoned or hanged after the 1886 Haymarket Riot in Chicago). Leandro Ravera Bianchi was named president of the recently created club.
     The club immediately adopted the red and white colors as an homage to deputy Alfredo Palacios, the first congressman elected from the Socialist Party in Argentina. The club affiliated itself with the Liga Central de Football, a minor league in which small clubs and companies took part of. 
     The first match played by Argentinos Juniors was against Club La Prensa, which Argentinos Juniors lost by a catastrophic scoreline of 12–1. Nevertheless, the squad would be crowned champion at the end of the season. Argentinos Juniors played its home matches in the field located on Gaona Avenue and Añasco Street.After the club was evicted, 
     Argentinos Juniors played at several fields, first renting one in Villa Ballester, returning to their neighborhood of origin in 1907. After a brief stint in Villa Urquiza, the club returned to Caballito, later moving to Fraga and Estomba streets in Villa Ortúzar. In 1909, Argentinos gained affiliation with the Argentine Football Association, 
@@ -1126,7 +1126,7 @@ const footballClubs = [
     location: "Corrientes",
     history: 
     `
-    t was founded on July 27, 1927 by a group of young people from the Camba Cuá neighborhood of Corrientes, with the intention of participating in amateur regional soccer tournaments.
+    The club was founded on July 27, 1927 by a group of young people from the Camba Cuá neighborhood of Corrientes, with the intention of participating in amateur regional soccer tournaments.
     `
   },
   {
@@ -2818,7 +2818,7 @@ It was founded on August 5, 1922, in the town of Salto, province of Buenos Aires
   },
   {
     id: 183,
-    clubName: "Club Social y Deportivo Alianza (Cutral Co)",
+    clubName: "Club Social y Deportivo Alianza de Cutral Co",
     badgeImageUrl: "./img/14028710.png",
     coordinates: [-38.93673, -69.22112],
     formedIn: "1979",
