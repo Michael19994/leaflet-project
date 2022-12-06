@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Argentine Football Clubs</title>
   <script type="module" src="javascript/clubs.js" defer></script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -24,9 +24,6 @@
           <a href="clubs.html">Clubs</a>
         </li>
         <li>
-          <a href="api.html">API</a>
-        </li>
-        <li>
           <a href="competitions.html">Competitions</a>
         </li>
         <li>
@@ -41,60 +38,83 @@
 
   <main class="maincontainer__clubs">
     
-    <h2 class="titleofclubs">Clubs</h2>
+    <h2 class="clubs__title">Clubs</h2>
     
+  <div class="clubs__maincontentheader">
     <label for="clubListChoice">
-      <input list="clubList" id="clubListChoice" name="clubListChoice" placeholder="Click here to search a Football Club from Argentina"/>
+      <input list="clubList" id="clubListChoice" name="clubListChoice" placeholder="Click or type here to search for a Football Club from Argentina"/>
     </label>
-    
-    
-    
     <button id="searchClubsBtn">Search </button>
     <div id="footBallClubSelector"></div>
     
-    <figure>
-      <img srcset="./img/Mario_Kempes_Argentina_vs._Holanda.jpg 480w, ./img/Mario_Kempes_Argentina_vs._Holanda.jpg 800w"
+  </div>
+    
+  <div id="clubs__popup"></div>
+  
+  <div class="clubs__imgcontainer">
+    
+    <figure class="clubs_imgfigure">
+      <img 
+          class="clubs__imgs"
+          srcset="./img/Mario_Kempes_Argentina_vs._Holanda.jpg 480w, ./img/Mario_Kempes_Argentina_vs._Holanda.jpg 800w"
           sizes="(max-width: 600px) 480px, 800px"
           src="./img/Mario_Kempes_Argentina_vs._Holanda.jpg"
           alt="Mario Kempes scoring in the 1978 World Cup final" 
       />
-  </figure>
-    
-    <div id="club__popup"></div>
-    
-    <div class="instructionsdiv__clubs">
-      <article class="article__clubs">
-        <h3>Instructions & How to use</h3>
+      <figcaption class="clubs__imgfigcaption">Mario Kempes scoring at the 1978 World Cup final</figcaption>
+    </figure>
 
-        <ol class="clubs__ol">
-          <li>Instructions 1</li>
-          <li>Instructions 2</li>
-          <li>Instructions 3</li>
-        </ol>
-      </article>
-    </div>
+    <figure class="clubs_imgfigure">
+      <img 
+          class="clubs__imgs"
+          srcset="./img/Rus-Arg_2017_(4).jpg 480w, ./img/Rus-Arg_2017_(4).jpg 800w"
+          sizes="(max-width: 600px) 480px, 800px"
+          src="./img/Rus-Arg_2017_(4).jpg"
+          alt="" 
+      />
+      <figcaption class="clubs__imgfigcaption"figcaption>Javier Mascherano in a friendly match</figcaption>
+    </figure>
+
+    <figure class="clubs_imgfigure">
+      <img 
+          class="clubs__imgs"
+          srcset="./img/Javier_Zanetti_et_Cristiano_Ronaldo.jpg 480w, ./img/Javier_Zanetti_et_Cristiano_Ronaldo.jpg 800w"
+          sizes="(max-width: 600px) 480px, 800px"
+          src="./img/Javier_Zanetti_et_Cristiano_Ronaldo.jpg"
+          alt="" 
+      />
+      <figcaption class="clubs__imgfigcaption"figcaption>Javier Zanetti in a friendly match</figcaption>
+    </figure>
+    
+  </div>
+
   </main>
 
   
 
   <footer class="footercontainer">
 
-    <p class="author">Authors - Michael Lyon & Mike Langley</p>
+    <div class="footerdiv1">
+      <img class="footer__imgflag"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina">
 
-    <a href="https://www.linkedin.com/in/michaellyon19994/">Michael Lyon - LinkedIn</a>
-    <a href="https://github.com/Michael19994" >Michael Lyon - Github</a>
-    <a href="https://www.linkedin.com/in/mike-langley/">Michael Langley - LinkedIn</a>
-    <a href="https://github.com/gm1wkr">Michael Langley - Github</a>
-    <p class="copy">&copy;</p>
-    <p class="trade">&trade;</p>
+      <div class="footer__linkwrapper1">
+        <a href="https://www.linkedin.com/in/michaellyon19994/">Michael Lyon - LinkedIn</a>
+        <a href="https://github.com/Michael19994" >Michael Lyon - Github</a>
+      </div>
+      <div class="footer__linkwrapper2">
+        <a href="https://www.linkedin.com/in/mike-langley/">Michael Langley - LinkedIn</a>
+        <a href="https://github.com/gm1wkr">Michael Langley - Github</a>
+      </div>
+      
+    </div>
     
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" >
-    
+    <div class="footerdiv2">
+      <figure class="footer__figurelogo">
+        <img class="footer__imglogo" src="./img/mel_logo_v1.png" alt="logo">
+      </figure>
+      <p class="copy">&copy; 2022</p>
+    </div>
+
   </footer>
 
 </body>

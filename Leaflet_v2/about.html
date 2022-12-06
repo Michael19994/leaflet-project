@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Argentine Football Clubs</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -23,9 +23,6 @@
           <a href="clubs.html">Clubs</a>
         </li>
         <li>
-          <a href="api.html">API</a>
-        </li>
-        <li>
           <a href="competitions.html">Competitions</a>
         </li>
         <li>
@@ -39,84 +36,122 @@
 
   <main class="about__maincontainer">
 
-    <h2>About</h2>
+    <h2 class="about__title">About</h2>
 
-    <div class="about__who">
-      <h3>Who we are?</h3>
-      <P>We both are junior software developers based in Scotland who graduated from CodeClan (SQA accredited digital skills academy).
-         We pride ourselves on making our content accessible to all walks of life.  </P>
-      <figure>
-        <img  
-            class="about__distefano"
-            srcset="./img/Di_stefano_argentina.jpg 480w, ./img/Mcu_Alfredo_Di_Stefano.jpg 800w"
-            sizes="(max-width: 600px) 480px, 800px"
-            src="./img/Di_stefano_argentina.jpg"
-            alt="Alfredo Di Stefano in 1947" 
-        />
-        <figcaption> Alfredo Di Stefano in 1947 </figcaption>
-      </figure>
-    </div>
+    <article class="about__articlecontainer">
+      <h3 class="about__articletitle">Who we are and what are we trying to achieve?</h3>
+        <div class="about__articlesection">
+          <P class="about__articletext">
+            We are both junior software developers based in Scotland who graduated from CodeClan (SQA accredited digital skills academy).
+            We pride ourselves on making our content accessible and responsive to ensure the user experience is good. 
+            We are making an attempt to increase our self learning by creating projects such as this one, to make 
+            better all-round Software Developers and to hopefully gain employment as  a Junior Fronted Software Developer.
+          </P>
+          <figure class="about__articlefigure">
+            <img  
+                class="about__articleimg"
+                srcset="./img/Di_stefano_argentina.jpg 480w, ./img/Mcu_Alfredo_Di_Stefano.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./img/Di_stefano_argentina.jpg"
+                alt="Alfredo Di Stefano in 1947" 
+            />
+            <figcaption class="about__articlefigcaption">Alfredo Di Stefano in 1947</figcaption>
+          </figure>
+        </div>
+    </article>
 
-    <div class="about__project">
-      <h3>Why this Project?</h3>
-      <P>We created this project to practice our fronted software development skills such as JavaScript, HTML, CSS and gain familiarity with Leaflet</P>
-      <figure>
-        <img
-            srcset="./img/341full-gabriel-batistuta.jpg 480w, ./img/341full-gabriel-batistuta.jpg 800w"
-            sizes="(max-width: 600px) 480px, 800px"
-            src="img/341full-gabriel-batistuta.jpg"
-            alt="Gabriel Batistuta at the 1998 World Cup" 
-        />
-      </figure>
-      <figcaption> Gabriel Batistuta at the 1998 World Cup</figcaption>
-    </div>
+    <article class="about__articlecontainer">
+      <h3 class="about__articletitle">Why this Project and what we learned?</h3>
+        <div class="about__articlesection">
+          <P class="about__articletext">
+            The Map was the only feature originally designed for this project until we both agreed to make it more accessible to add in a clubs page so people who could not access the map. 
+            We then took the opportunity on as a project to test our fronted software development skills such as JavaScript, HTML, CSS and gain familiarity with Leaflet which 
+            was used to create this website. Little aspects such as being able to know where to place components on the web page has shown how far our CSS has came along, 
+            knowing the semantic markup (HTML) will help browsers acknowledge what part of the webpage is what. Improving our JavaScript by getting more familiar with event listeners, arrays and 
+            methods that allow for a functional search bar to be incorporated as well as gaining knowledge on modal windows to have another element of user interface.   
+          </P>
+          <figure class="about__articlefigure">
+            <img
+                class="about__articleimg"
+                srcset="./img/341full-gabriel-batistuta.jpg 480w, ./img/341full-gabriel-batistuta.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="img/341full-gabriel-batistuta.jpg"
+                alt="Gabriel Batistuta at the 1998 World Cup" 
+            />
+            <figcaption class="about__articlefigcaption">Gabriel Batistuta at the 1998 World Cup</figcaption>
+          </figure>
+        </div>
+      </article>
 
-    <div class="about__thanks">
-      <h3>Thank You</h3>
-      <P>We want to give a massive thanks to Wikipedia, Google, Youtube and Listal for data, images, videos and translating information</P>
-      <figure>
-        <img 
-            srcset="./img/Diego_Simeone_-_01.jpg 480w, ./img/Diego_Simeone_-_01.jpg 800w"
-            sizes="(max-width: 600px) 480px, 800px"
-            src="./img/Diego_Simeone_-_01.jpg"
-            alt="Diego Simeone at press conference" 
-        />
-      </figure>
-      <figcaption> Diego Simeone, former player and currently a manager  </figcaption>
-   </div>
+    <article class="about__articlecontainer">
+      <h3 class="about__articletitle">A Big Thank You</h3>
+        <div class="about__articlesection">
+          <P class="about__articletext">
+            We want to give a massive thanks to Wikipedia, Google, Youtube and Listal for data, images, videos and translating information.
+            None of this project would have been possible without them.
+          </P>
+          <figure class="about__articlefigure">
+            <img
+                class="about__articleimg" 
+                srcset="./img/Diego_Simeone_-_01.jpg 480w, ./img/Diego_Simeone_-_01.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./img/Diego_Simeone_-_01.jpg"
+                alt="Diego Simeone at press conference" 
+            />
+            <figcaption class="about__articlefigcaption">Diego Simeone, former player and currently a manager</figcaption>
+          </figure>
+        </div>
+    </article>
 
-    <div class="about__feedback"></div>
-      <h3>Want to leave feedback?</h3>
-      <P>Feel like we may have got something incorrect? or just to get in touch then message us on LinkedIn.</P>
-      <figure>
-        <img 
-            srcset="./img/Marcelo_Bielsa_OM_2015.jpg. 480w, ./img/Marcelo_Bielsa_OM_2015.jpg 800w"
-            sizes="(max-width: 600px) 480px, 800px"
-            src="./img/Marcelo_Bielsa_OM_2015.jpg"
-            alt="Marcelo Bielsa sitting on bucket" 
-        />
-    </figure>
-    <figcaption> Marcelo Bielsa, iconic Argentine manager </figcaption>
-</div>
+    <article class="about__articlecontainer">
+      <h3 class="about__articletitle">Want to leave feedback?</h3>
+        <div class="about__articlesection">
+          <P class="about__articletext">
+            We encourage you to give us feedback whether that be positive or negative constructive feedback so we can improve 
+            the content. 
+            We would also be open to suggestions on creating another football clubs page based on a different country.  
+            Want to get in touch then message us on LinkedIn.
+              
+          </P>
+          <figure class="about__articlefigure">
+            <img
+                class="about__articleimg" 
+                srcset="./img/Marcelo_Bielsa_OM_2015.jpg. 480w, ./img/Marcelo_Bielsa_OM_2015.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./img/Marcelo_Bielsa_OM_2015.jpg"
+                alt="Marcelo Bielsa sitting on bucket" 
+            />
+            <figcaption class="about__articlefigcaption">Marcelo Bielsa, iconic Argentine manager</figcaption>
+          </figure>
+    </article>
+
+  </main>
+
 
   
   <footer class="footercontainer">
-    
-    <p class="author">Authors - Michael Lyon & Mike Langley</p>
 
-    <a href="https://www.linkedin.com/in/michaellyon19994/">Michael Lyon - LinkedIn</a>
-    <a href="https://github.com/Michael19994" >Michael Lyon - Github</a>
-    <a href="https://www.linkedin.com/in/mike-langley/">Michael Langley - LinkedIn</a>
-    <a href="https://github.com/gm1wkr">Michael Langley - Github</a>
-    <p class="copy">&copy;</p>
-    <p class="trade">&trade;</p>
+    <div class="footerdiv1">
+      <img class="footer__imgflag"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina">
+
+      <div class="footer__linkwrapper1">
+        <a href="https://www.linkedin.com/in/michaellyon19994/">Michael Lyon - LinkedIn</a>
+        <a href="https://github.com/Michael19994" >Michael Lyon - Github</a>
+      </div>
+      <div class="footer__linkwrapper2">
+        <a href="https://www.linkedin.com/in/mike-langley/">Michael Langley - LinkedIn</a>
+        <a href="https://github.com/gm1wkr">Michael Langley - Github</a>
+      </div>
+      
+    </div>
     
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <p>&star;</p>
-    <img class="img__footer"src="img/Flag_of_Argentina.svg.png" alt="Flag of Argentina" >
+    <div class="footerdiv2">
+      <figure class="footer__figurelogo">
+        <img class="footer__imglogo" src="./img/mel_logo_v1.png" alt="logo">
+      </figure>
+      <p class="copy">&copy; 2022</p>
+    </div>
+
   </footer>
 
 </body>

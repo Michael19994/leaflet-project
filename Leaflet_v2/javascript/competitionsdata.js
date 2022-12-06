@@ -21,7 +21,7 @@ const competitions = [
     `,
     tier: "1st",
     numOfTeams: "28",
-    teams: "./img/clubspremiera.png",
+    teams: "./img/premiraclubs1.png",
     video: `https://www.youtube.com/embed/Uq3oytllTxw`,
     highlights: "https://www.youtube.com/c/LigaProfesional/videos",
     website: "https://www.ligaprofesional.ar/" 
@@ -47,7 +47,7 @@ const competitions = [
     `,
     tier: "2nd",
     numOfTeams: "37",
-    teams: "./img/clubsnacional.png",
+    teams: "./img/nacionalClubs1.png",
     video: "https://www.youtube.com/embed/1taeCp24aFk",
     highlights: "https://www.youtube.com/c/tycsportsplay",
     website: "https://www.afa.com.ar/es/pages/estadisticas-primera-b-nacional" 
@@ -70,7 +70,7 @@ const competitions = [
     `,
     tier: "3rd",
     numOfTeams: "17",
-    teams: "./img/premirabclubs.png",
+    teams: "./img/premirab_clubs.png",
     video: "https://www.youtube.com/embed/ozcq04vFzWc",
     highlights: "https://www.youtube.com/c/tycsportsplay/videos",
     website: "https://www.afa.com.ar/es/pages/estadisticas-primera-b" 
@@ -94,7 +94,7 @@ const competitions = [
     `,
     tier: "3rd",
     numOfTeams: "34",
-    teams: "./img/torneoAclubs.png",
+    teams: "./img/torneoAclubs1.png",
     video: "https://www.youtube.com/embed/QS1DF8uhAfY",
     highlights: "https://www.youtube.com/user/TVPublicaArgentina/streams",
     website: "https://www.afa.com.ar/es/pages/federal-a" 
@@ -116,14 +116,14 @@ const competitions = [
     `,
     tier: "4th",
     numOfTeams: "20",
-    teams: "./img/primeraClubs.png",
+    teams: "./img/premiracclubs1.png",
     video: "https://www.youtube.com/embed/oOLNpXUFYzU",
     highlights: "https://www.youtube.com/c/canaldeportv/videos",
     website: "https://www.afa.com.ar/es/pages/estadisticas-primera-c" 
   },
   {
     id: 6,
-    name: "Torneo Regional Federal Amateur / Torneo Federal B",
+    name: "Torneo Regional Federal Amateur",
     imgLogo: "./img/argentina-torneo-regional-federal-amateur.webp",
     information: 
     `
@@ -161,7 +161,7 @@ const competitions = [
     `,
     tier: "5th",
     numOfTeams: "11",
-    teams: "./img/premiraDclubs.png",
+    teams: "./img/premiradclubs1.png",
     video: "https://www.youtube.com/embed/04Cgd2JuL3w",
     highlights: "https://www.youtube.com/channel/UCsSaH-pctrqodHS7EXsHKHA/streams",
     website: "https://www.afa.com.ar/es/pages/estadisticas-primera-d" 

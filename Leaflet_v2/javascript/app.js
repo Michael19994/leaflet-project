@@ -44,14 +44,15 @@ L.control.layers(baseMaps).addTo(map);
 footballClubs.map((club) => {
 
   const popupTemplate = `
-  <div class="popup">
-    <h2>${club.clubName}</h2>
-    <img class="img__popup" src=${club.badgeImageUrl}>
+  <div class="index__popup">
+    <h2 class="index__popupclubname">${club.clubName}</h2>
+    <img class="index__imglogo" src=${club.badgeImageUrl}>
     <p>Location: ${club.location} </p>
     <p>Formed In: ${club.formedIn}</p>
+    <img class="index__imgkit" src=${club.kit}>
     <p>Stadium Name: ${club.stadiumName}</p>
     <p>Capacity: ${club.stadiumCapacity}</p>
-    <p>${club.history}</p>
+    <p class="index__popuptext">${club.history}</p>
   </div>
   `;
 
