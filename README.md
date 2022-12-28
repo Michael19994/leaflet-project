@@ -13,10 +13,14 @@ Help users who cannot access the map.
 
 Use a large database of 200+ 
 
-Deployment
 
 
 Extensions
 
 Do the simular project in React js
 
+Deployment
+
+
+
+Please fork this repo, hoping to get the time to deploy soon. If you fork this then please open up using leaflet v2. 
